@@ -153,7 +153,7 @@ button {
   align-items: center;
   width: 100%;
   min-height: 100px;
-  padding: 225px 0;
+  padding: 175px 0;
   position: relative;
   z-index: var(--z-default);
 }
@@ -352,7 +352,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  min-height: 400px;
+  min-height: 500px;
   padding: var(--space-xl) 0;
   /* Updated padding */
   position: relative;
