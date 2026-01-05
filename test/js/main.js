@@ -34,11 +34,11 @@
     if (!logo) return;
 
     const frames = [
-      "assets/colors/color1.svg",
-      "assets/colors/color2.svg",
-      "assets/colors/color3.svg",
-      "assets/colors/color4.svg",
-      "assets/colors/color5.svg"
+      "/test/assets/colors/color1.svg",
+      "/test/assets/colors/color2.svg",
+      "/test/assets/colors/color3.svg",
+      "/test/assets/colors/color4.svg",
+      "/test/assets/colors/color5.svg"
     ];
 
     let idx = 0;
