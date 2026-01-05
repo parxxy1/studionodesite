@@ -1,0 +1,1120 @@
+/* ==========================================================================
+   Studio Node Website - Main Styles
+   BEM Naming Convention: block__element--modifier
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Base / Reset
+   ------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-proxima);
+  background-color: var(--color-opal-white);
+  color: var(--color-node-orange);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* -------------------------------------------------------------------------
+   Layout
+   ------------------------------------------------------------------------- */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* -------------------------------------------------------------------------
+   HERO BACKGROUNDS (data-name: "HERO BACKGROUNDS")
+   ------------------------------------------------------------------------- */
+.hero-backgrounds {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 800px;
+  pointer-events: none;
+  z-index: var(--z-background);
+}
+
+.hero-backgrounds__gradient {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100%;
+  min-width: 1440px;
+  /* Prevent squishing on smaller screens */
+  transform: translateX(-50%);
+  /* Center the gradient */
+  height: 600px;
+  /* Layered gradients: radial for the center burst, linear for the fade to white */
+  background:
+    /* Linear fade overlay: transparent at top, white at bottom */
+    linear-gradient(to bottom,
+      transparent 0%,
+      transparent 55%,
+      rgba(246, 255, 252, 0.3) 65%,
+      rgba(246, 255, 252, 0.6) 75%,
+      rgba(246, 255, 252, 0.85) 85%,
+      var(--color-opal-white) 100%),
+    /* Original radial gradient */
+    radial-gradient(ellipse at center top,
+      var(--color-gradient-start) 0%,
+      var(--color-gradient-yellow-light) 15%,
+      var(--color-gradient-yellow) 30%,
+      var(--color-gradient-mint) 45%,
+      var(--color-gradient-aqua) 55%,
+      var(--color-gradient-sky) 65%,
+      var(--color-gradient-teal-mid) 85%,
+      var(--color-gradient-teal) 100%);
+
+  /* Responsive: "Zoom in" (crop top) on smaller screens */
+  @media (max-width: 768px) {
+    top: -100px;
+    /* Shift up to crop the top */
+  }
+}
+
+.hero-backgrounds__fade {
+  /* No longer needed - fade is handled by the gradient overlay */
+  display: none;
+}
+
+/* -------------------------------------------------------------------------
+   NAV BUTTONS (data-name: "nav buttons")
+   ------------------------------------------------------------------------- */
+.nav-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  height: var(--nav-height);
+  padding: 21px 29px;
+  position: relative;
+  z-index: var(--z-nav);
+}
+
+.nav-buttons__menu {
+  width: 45px;
+  height: 46px;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.nav-buttons__menu:hover {
+  transform: scale(1.05);
+}
+
+.nav-buttons__menu img {
+  width: 100%;
+  height: 100%;
+}
+
+/* -------------------------------------------------------------------------
+   HERO BODY (data-name: "Hero Body")
+   ------------------------------------------------------------------------- */
+.hero-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  padding: 225px 0;
+  position: relative;
+  z-index: var(--z-default);
+}
+
+/* Horizontal Logo (data-name: "Horizontal Logo") */
+.horizontal-logo {
+  position: relative;
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: max-content;
+  place-items: start;
+}
+
+.horizontal-logo__vector {
+  grid-area: 1 / 1;
+  position: relative;
+}
+
+.horizontal-logo__vector img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual vector positions - STUDIO letters */
+.horizontal-logo__vector--s {
+  width: 24.182px;
+  height: 34.354px;
+  margin-left: 117.76px;
+  margin-top: 0.1px;
+}
+
+.horizontal-logo__vector--t {
+  width: 27.849px;
+  height: 33.652px;
+  margin-left: 143.26px;
+  margin-top: 0.56px;
+}
+
+.horizontal-logo__vector--u {
+  width: 28.848px;
+  height: 34.209px;
+  margin-left: 173.96px;
+  margin-top: 0.36px;
+}
+
+.horizontal-logo__vector--d {
+  width: 30.277px;
+  height: 33.457px;
+  margin-left: 208.28px;
+  margin-top: 0.56px;
+}
+
+.horizontal-logo__vector--i {
+  width: 10.092px;
+  height: 33.845px;
+  margin-left: 243.03px;
+  margin-top: 0.36px;
+}
+
+.horizontal-logo__vector--o {
+  width: 33.704px;
+  height: 34.575px;
+  margin-left: 257.6px;
+  margin-top: 0;
+}
+
+/* NODE letters */
+.horizontal-logo__vector--n {
+  width: 56.868px;
+  height: 59.851px;
+  margin-left: 113.29px;
+  margin-top: 47.39px;
+}
+
+.horizontal-logo__vector--o2 {
+  width: 55.616px;
+  height: 60.586px;
+  margin-left: 172.04px;
+  margin-top: 47.02px;
+}
+
+.horizontal-logo__vector--d2 {
+  width: 52.375px;
+  height: 60.586px;
+  margin-left: 230.54px;
+  margin-top: 47.02px;
+}
+
+.horizontal-logo__vector--e {
+  width: 42.207px;
+  height: 60.218px;
+  margin-left: 285.79px;
+  margin-top: 47.21px;
+}
+
+/* Node Icon (data-name: "Node Icon") */
+.horizontal-logo__icon {
+  grid-area: 1 / 1;
+  position: relative;
+  width: 104.164px;
+  height: 107.451px;
+  margin-top: 0.59px;
+}
+
+.horizontal-logo__icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.horizontal-logo__icon-inner {
+  position: absolute;
+}
+
+.horizontal-logo__icon-inner--main {
+  inset: 11.26% 9.37% 8.93% 9.37%;
+}
+
+.horizontal-logo__icon-inner--top {
+  inset: 7.93% 10% 57.72% 53.34%;
+}
+
+.horizontal-logo__icon-inner--bottom {
+  inset: 60.71% 57.86% 7.93% 9.53%;
+}
+
+.horizontal-logo__icon-inner img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Tagline (data-name: "PEOPLE CREATING FOR PEOPLE") */
+.hero-body__tagline {
+  font-family: var(--font-proxima);
+  font-weight: var(--font-weight-black);
+  font-size: var(--font-size-lg);
+  line-height: 37px;
+  letter-spacing: -0.6px;
+  color: var(--color-node-orange);
+  text-align: center;
+  text-shadow: var(--text-shadow-hero);
+  margin-top: var(--space-sm);
+}
+
+.hero-body__tagline .text--black {
+  font-weight: var(--font-weight-black);
+}
+
+.hero-body__tagline .text--medium {
+  font-weight: var(--font-weight-medium);
+}
+
+/* Contact Button (data-name: "contact button") */
+.hero-body__contact-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 140px;
+  padding: 0 30px;
+  height: 50px;
+  background-color: var(--color-node-orange);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-button);
+  margin-top: var(--space-md);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.hero-body__contact-button:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .hero-body__contact-button {
+    height: 56px;
+    width: 100%;
+    max-width: 300px;
+    /* Optional: prevent full width on slightly larger phones if preferred, or keep auto */
+  }
+}
+
+.hero-body__contact-button-text {
+  font-family: var(--font-rooney);
+  font-weight: var(--font-weight-black);
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------
+   WHO WE ARE Section (data-name: "WHO WE ARE")
+   ------------------------------------------------------------------------- */
+.who-we-are {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 500px;
+  padding: var(--space-xl) 0;
+  /* Updated padding */
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-opal-white);
+  /* Added */
+  color: var(--color-ink-black);
+  /* Added */
+  z-index: 1;
+  /* Added */
+}
+
+/* Body content (data-name: "body") */
+.who-we-are__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--color-node-orange);
+  width: 100%;
+  height: 212px;
+  padding: 0 var(--space-sm);
+  position: relative;
+  z-index: var(--z-default);
+}
+
+.who-we-are__title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-proxima);
+  font-weight: var(--font-weight-black);
+  font-size: 48px;
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  text-shadow: var(--text-shadow-heading);
+}
+
+.who-we-are__description {
+  font-family: var(--font-proxima);
+  font-weight: var(--font-weight-medium);
+  font-size: 32px;
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
+  max-width: 1004px;
+  margin-top: 0;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.who-we-are__description strong {
+  font-weight: var(--font-weight-black);
+}
+
+/* Side Hands (data-name: "side hands") */
+.who-we-are__side-hands {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% + 100px);
+  left: -79px;
+  top: 75px;
+  pointer-events: none;
+}
+
+.who-we-are__hand-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Left Side (data-name: "left side") */
+.who-we-are__left-side {
+  width: 113px;
+  height: 410.031px;
+  transform: rotate(292.825deg) scaleY(-1);
+}
+
+/* Right Side (data-name: "right side") */
+.who-we-are__right-side {
+  width: 113px;
+  height: 397.308px;
+  transform: rotate(247.175deg);
+}
+
+.who-we-are__left-side img,
+.who-we-are__right-side img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Heart Hands (data-name: "Heart Hands") */
+.who-we-are__heart-hands {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 268px;
+  z-index: var(--z-default);
+}
+
+.who-we-are__heart-hands img {
+  width: 100%;
+  height: 100%;
+}
+
+/* -------------------------------------------------------------------------
+   BAR SEPARATOR (data-name: "BarSeperator")
+   ------------------------------------------------------------------------- */
+.bar-separator {
+  width: 100%;
+  height: 91px;
+}
+
+.bar-separator img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* -------------------------------------------------------------------------
+   WHAT CREATE Section (data-name: "WHAT CREATE")
+   ------------------------------------------------------------------------- */
+.what-create {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 500px;
+  padding: var(--space-xs) 0;
+
+  /* Removed horizontal padding for edge-to-edge scroll */
+}
+
+.what-create__title {
+  font-family: var(--font-proxima);
+  font-weight: var(--font-weight-black);
+  font-size: 54px;
+  color: var(--color-digital-sky);
+  text-shadow: var(--text-shadow-created);
+  text-align: left;
+  padding: 20px var(--space-xl);
+  /* Added padding to keep title aligned */
+}
+
+/* Project Reel (data-name: "project reel") */
+/* Project Reel Removed */
+
+/* Portfolio Grid (Track) */
+.portfolio-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  /* Prevent wrapping */
+  width: max-content;
+  /* Allow width to grow based on content */
+  gap: 50px;
+  /* Space between items */
+
+  padding-top: 20px;
+  /* Remove horizontal padding to allow edge-to-edge */
+  animation: scroll-horizontal var(--scroll-speed) linear infinite;
+}
+
+/* Pause animation on hover */
+/* Pause animation on hover REMOVED per user request */
+
+/* Infinite Scroll Animation */
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.portfolio-item {
+  position: relative;
+  width: 250px;
+  /* Reverted width */
+  height: 325px;
+  /* Reverted height */
+  flex-shrink: 0;
+  /* Prevent shrinking */
+
+  /* Default color (Orange) */
+  --item-color: var(--color-node-orange);
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 260px;
+  }
+}
+
+/* Alternating Colors */
+.portfolio-item:nth-child(4n+1) {
+  --item-color: var(--color-node-orange);
+}
+
+.portfolio-item:nth-child(4n+2) {
+  --item-color: var(--color-digital-sky);
+}
+
+.portfolio-item:nth-child(4n+3) {
+  --item-color: var(--color-citra);
+}
+
+.portfolio-item:nth-child(4n+4) {
+  --item-color: var(--color-laguna);
+}
+
+.portfolio-item__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-card);
+  /* Reverted radius */
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--color-placeholder);
+}
+
+.portfolio-item__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-item__caption {
+  position: absolute;
+  bottom: -2%;
+  left: -1%;
+  width: 102%;
+  height: 50px;
+  /* Reverted height */
+  background-color: var(--item-color);
+  border-radius: var(--radius-card) var(--radius-card) var(--radius-card) var(--radius-card);
+  /* Reverted radius */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  /* Reverted padding */
+}
+
+.portfolio-item__caption p {
+  font-family: var(--font-proxima);
+  font-weight: var(--font-weight-extrabold);
+  /* Reverted weight */
+  font-size: 13px;
+  /* Reverted size */
+  color: var(--color-opal-white);
+  text-align: center;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+  /* Reverted shadow */
+}
+
+/* Specific styling for Citra (Yellow) items */
+.portfolio-item:nth-child(4n+3) .portfolio-item__caption p {
+  color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0px 1px 0px var(--color-white);
+}
+
+
+/* -------------------------------------------------------------------------
+   SQUIGGLY LINE (data-name: "ScwigglyLine")
+   ------------------------------------------------------------------------- */
+.squiggly-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  padding: var(--space-xs);
+}
+
+.squiggly-line img {
+  width: 3500px;
+  height: 155px;
+  /* Fixed height to match Figma, allowing width to overflow */
+  max-width: none;
+  display: block;
+  flex-shrink: 0;
+  /* Prevent shrinking */
+}
+
+/* -------------------------------------------------------------------------
+   WHAT WE ARE Section (data-name: "WHAT WE ARE")
+   ------------------------------------------------------------------------- */
+.what-we-are {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 527px;
+  padding: 0 var(--space-xl);
+}
+
+.what-we-are__title {
+  font-family: var(--font-proxima);
+  font-weight: var(--font-weight-black);
+  font-size: 54px;
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.54px;
+  color: var(--color-node-orange);
+  text-shadow: var(--text-shadow-section);
+  padding-bottom: 20px;
+}
+
+.what-we-are__content {
+  font-family: var(--font-proxima);
+  font-weight: var(--font-weight-medium);
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -1.3px;
+  color: var(--color-node-orange);
+  text-transform: uppercase;
+  max-width: 1195px;
+  text-align: left;
+}
+
+.what-we-are__content p {
+  margin-bottom: var(--space-md);
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -1.3px;
+}
+
+.what-we-are__content .text--extrabold {
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+  letter-spacing: -1.3px;
+}
+
+.what-we-are__content .text--italic {
+  font-style: italic;
+}
+
+.what-we-are__cta-text {
+  margin-top: var(--space-md);
+  font-weight: var(--font-weight-bold);
+  /* Adjust if needed */
+}
+
+.what-we-are .hero-body__contact-button {
+  margin-top: 0;
+}
+
+/* -------------------------------------------------------------------------
+   FOOTER (data-name: "FOOTER")
+   ------------------------------------------------------------------------/* Footer (data-name: "Footer") */
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: var(--space-xl);
+  overflow: visible;
+  margin-top: 0px;
+  z-index: -1;
+}
+
+/* Footer Gradient (data-name: "FooterGradient") */
+.footer__gradient {
+  position: absolute;
+  right: 0;
+  /* Anchor to the right */
+  left: auto;
+  /* Remove centering */
+  bottom: 0;
+  width: 100%;
+  min-width: 1440px;
+  /* Prevent squishing */
+  height: 200px;
+  /* Taller to feel like a sunset */
+  transform: none;
+  /* Remove centering transform */
+  /* Center it */
+  margin-bottom: 0;
+  /* Reset margin since it's absolute now */
+  z-index: 5;
+  /* Ensure it sits above the white background of the previous section */
+  pointer-events: none;
+  /* Let clicks pass through to potential buttons underneath if any (though button is usually above) */
+  /* Sunset gradient: Specific rainbow sunset request */
+  background:
+    /* Linear fade at top to blend with body */
+    linear-gradient(to top,
+      transparent 0%,
+      var(--color-opal-white) 100%),
+    /* Radial burst sticking up from bottom right */
+    radial-gradient(ellipse at right bottom,
+      var(--color-node-orange) 0%,
+      var(--color-gradient-yellow) 20%,
+      var(--color-gradient-mint) 40%,
+      var(--color-digital-sky) 60%,
+      var(--color-opal-white) 80%);
+  opacity: 0.8;
+
+  /* Responsive: "Zoom in" (crop bottom) on smaller screens */
+  @media (max-width: 768px) {
+    /* Only shift down, do not translate X */
+    transform: translateY(20%);
+    /* Remove previous margin hacks if any */
+    margin-bottom: 0;
+  }
+}
+
+/* Footer Outline (data-name: "footer outline") */
+.footer__outline {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 49px;
+  /* background-color: var(--color-laguna); REMOVED per user request */
+  padding: 0 var(--space-xs);
+  overflow: hidden;
+  margin-top: -50px;
+  /* Overlap with gradient */
+  z-index: 10;
+  pointer-events: none;
+  /* Let clicks pass through if needed */
+}
+
+/* Animation for color cycling */
+@keyframes colorCycle {
+  0% {
+    fill: var(--color-node-orange);
+    color: var(--color-node-orange);
+  }
+
+  25% {
+    fill: var(--color-digital-sky);
+    color: var(--color-digital-sky);
+  }
+
+  50% {
+    fill: var(--color-gradient-mint);
+    color: var(--color-gradient-mint);
+  }
+
+  75% {
+    fill: var(--color-citra);
+    color: var(--color-citra);
+  }
+
+  100% {
+    fill: var(--color-node-orange);
+    color: var(--color-node-orange);
+  }
+}
+
+/* Scroll animation for SVG text path */
+@keyframes scrollText {
+  from {
+    startOffset: 0%;
+  }
+
+  to {
+    startOffset: -50%;
+  }
+
+  /* Assuming text is duplicated once (2x length) */
+}
+
+/* Get In Touch Reel (data-name: "GETINTOUCHREEL") */
+.footer__reel {
+  width: 100%;
+  height: 200px;
+  /* Match gradient or larger */
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+  /* Above gradient */
+  pointer-events: none;
+}
+
+.footer__reel-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.footer__reel-text {
+  font-family: var(--font-rooney);
+  font-weight: var(--font-weight-black);
+  font-size: 24px;
+  /* Adjust size */
+  letter-spacing: 2px;
+  fill: var(--color-node-orange);
+  text-transform: uppercase;
+  animation: colorCycle 5s infinite linear;
+}
+
+.footer__reel-text textPath {
+  animation: scrollText 20s linear infinite;
+}
+
+/* -------------------------------------------------------------------------
+   Holding Hands (Removed)
+   ------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------
+   Responsive Styles
+   ------------------------------------------------------------------------- */
+
+/* Tablet - 768px */
+@media (max-width: 768px) {
+  .horizontal-logo {
+    transform: scale(0.75);
+    transform-origin: center;
+  }
+
+  .hero-body__tagline {
+    font-size: 24px;
+    line-height: 1.2;
+    padding: 0 var(--space-sm);
+  }
+
+  .hero-backgrounds {
+    height: 120vw;
+    max-height: 800px;
+  }
+
+  .hero-backgrounds__gradient {
+    height: 100vw;
+    max-height: 600px;
+  }
+
+  .who-we-are__title {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  .who-we-are__description {
+    font-size: 28px;
+    padding: 0 var(--space-sm);
+  }
+
+  .who-we-are__side-hands {
+    transform: scale(0.6);
+    left: -150px;
+    width: calc(100% + 300px);
+  }
+
+  .who-we-are__heart-hands {
+    width: 150px;
+    height: 200px;
+  }
+
+  .bar-separator {
+    height: 60px;
+  }
+
+  .what-create {
+    padding: var(--space-sm) 0;
+    /* Remove horizontal padding on mobile too */
+    min-height: auto;
+  }
+
+  .what-create__title {
+    font-size: 36px;
+    padding: 0 var(--space-sm);
+    /* Restore padding for title on mobile */
+  }
+
+  .what-create__portfolio-pic {
+    width: 160px;
+    height: 220px;
+  }
+
+  .what-create__portfolio-caption {
+    width: 160px;
+    height: 35px;
+  }
+
+  .squiggly-line__segment {
+    width: 350px;
+    height: 60px;
+  }
+
+  .what-we-are {
+    padding: var(--space-sm);
+    min-height: auto;
+  }
+
+  .what-we-are__title {
+    font-size: 36px;
+  }
+
+  .what-we-are__content {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .footer__holding-hands {
+    width: 140px;
+    height: 128px;
+    top: -20px;
+  }
+
+  .footer__reel-text {
+    font-size: 18px;
+  }
+}
+
+/* Mobile - 390px */
+@media (max-width: 480px) {
+  .nav-buttons {
+    padding: 15px 16px;
+  }
+
+  .nav-buttons__menu {
+    width: 35px;
+    height: 36px;
+  }
+
+  .horizontal-logo {
+    transform: scale(0.5);
+  }
+
+  .hero-body {
+    padding: 60px var(--space-xs);
+    min-height: 400px;
+  }
+
+  .hero-body__tagline {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .who-we-are {
+    min-height: 200px;
+  }
+
+  .who-we-are__title {
+    font-size: 28px;
+  }
+
+  .who-we-are__description {
+    font-size: 18px;
+  }
+
+  .who-we-are__side-hands {
+    display: none;
+  }
+
+  .who-we-are__heart-hands {
+    width: 100px;
+    height: 134px;
+  }
+
+  .what-create__title {
+    font-size: 24px;
+  }
+
+  .squiggly-line__segment {
+    width: 250px;
+    height: 45px;
+  }
+
+  .what-we-are__title {
+    font-size: 24px;
+  }
+
+  .what-we-are__content {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .footer__holding-hands {
+    width: 100px;
+    height: 91px;
+    top: -10px;
+  }
+
+  .footer__reel-text {
+    font-size: 16px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Floating Heart Animation
+   ------------------------------------------------------------------------- */
+.floating-heart {
+  position: fixed;
+  font-size: 24px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: floatUp 1.5s ease-out forwards;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  20% {
+    transform: translate(-50%, -80%) scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -300%) scale(1);
+  }
+}
+
+@keyframes scrollProjects {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Tagline Animation
+   ------------------------------------------------------------------------- */
+.animate-pulse {
+  display: inline-block;
+  font-weight: var(--font-weight-bold);
+  /* Start lighter */
+  animation: pulseWeight 4s ease-in-out infinite;
+}
+
+.animate-pulse:nth-of-type(1) {
+  animation-delay: 0s;
+}
+
+.animate-pulse:nth-of-type(2) {
+  animation-delay: 2s;
+  /* Half of 4s duration to alternate */
+}
+
+@keyframes pulseWeight {
+
+  0%,
+  100% {
+    font-weight: var(--font-weight-bold);
+    /* Base weight (lighter) */
+    transform: scale(1);
+  }
+
+  50% {
+    font-weight: var(--font-weight-black);
+    /* Pulse to heaviest weight (growth) */
+    transform: scale(1.02);
+    /* Very subtle scale to help the "growth" feeling */
+  }
+}

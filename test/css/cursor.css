@@ -1,0 +1,62 @@
+/* -------------------------------------------------------------------------
+   Custom Cursor Orb
+   ------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------
+   Custom Cursor Orb
+   ------------------------------------------------------------------------- */
+.cursor-orb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url('../assets/cursor-default.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 9999;
+    transform: none;
+    will-change: left, top, background-image;
+    transition: background-image 0.2s ease;
+}
+
+.cursor-orb.is-hovering {
+    background-image: url('../assets/cursor-hover.png');
+}
+
+/* @keyframes colorCycle removed - cursor is now static image */
+
+/* Hide default cursor GLOBALLY (even on interactive elements) */
+* {
+    cursor: none !important;
+}
+
+/* Removed "Restore cursor" block to ensure total stealth */
+
+/* -------------------------------------------------------------------------
+   Cursor Trail (Scribble Effect)
+   ------------------------------------------------------------------------- */
+.cursor-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(50%, 50%);
+    /* Centered */
+    animation: fadeOut 1s forwards;
+    /* Fades out and stays removed */
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translate(50%, 50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(50%, 50%) scale(0.2);
+    }
+}
