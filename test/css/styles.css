@@ -352,7 +352,7 @@ button {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  min-height: 500px;
+  min-height: 400px;
   padding: var(--space-xl) 0;
   /* Updated padding */
   position: relative;
