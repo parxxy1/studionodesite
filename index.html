@@ -1,260 +1,273 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Studio Node - People Creating for People. A design and development studio giving young professionals valuable skills.">
+
   <title>Studio Node</title>
-  <link rel="icon" type="image/png" href="src/nodeicon.png">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+
+  <!-- Fonts: Proxima Nova & Rooney Sans via Adobe Fonts -->
   <link rel="stylesheet" href="https://use.typekit.net/spf2pjm.css">
-  <style>
-    :root {
-      --text-color: #133566;
-      --wght-base: 900;
-      --wght-swing: 100;
-      --wght-swing-half: calc(var(--wght-swing) / 2);
-      --accent: #EF8639;
-      --ui-scale: .75;
-      --dot-float: 0.06em;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #F6FFFC;
-      color: var(--text-color);
-      font-family: "ohno-softie-variable", sans-serif;
-      font-variation-settings: "wght" var(--wght-base);
-      text-align: center;
-      padding: 24px;
-    }
-    .scale {
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transform: scale(var(--ui-scale));
-      transform-origin: top center;
-    }
-    .hero {
-      flex: 1;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-    .logo-stack {
-      width: clamp(10px, 30vw, 220px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .logo-cycle {
-      width: 55%;
-      display: block;
-      object-fit: contain;
-      border: none;
-      padding-bottom: 10px;
-    }
-    .logo {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      margin: 0;
-    }
-    h1 {
-      font-size: clamp(48px, 12vw, 140px);
-      letter-spacing: 0em;
-      font-weight: 100;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.02em;
-      flex-wrap: nowrap;
-      justify-content: center;
-      width: 100%;
-      max-width: 60vw;
-      margin: 0 auto;
-      padding-top: 100px;
-    }
-    .letter {
-      display: inline-block;
-      text-align: center;
-      transform-origin: 50% 50%;
-      will-change: transform, font-variation-settings;
-      animation: float1 5s ease-in-out infinite;
-      animation-delay: calc(var(--i) * 0.12s);
-    }
-    .letter.space { min-width: 0.4em; }
-    .letter:nth-child(3n) { animation-name: float2; }
-    .letter:nth-child(4n) { animation-name: float3; }
-    .letter:nth-child(5n) { animation-name: float4; }
-    @keyframes float1 {
-      0%   { transform: translate3d(0, 0, 0) rotate(-1deg) scale(0.995); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing-half)); }
-      20%  { transform: translate3d(0.8%, -0.8%, 0) rotate(1deg) scale(1.02); font-variation-settings: "wght" var(--wght-base); }
-      40%  { transform: translate3d(1.4%, -1.4%, 0) rotate(2deg) scale(1.05); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing)); }
-      60%  { transform: translate3d(-1.2%, 1%, 0) rotate(-1.5deg) scale(1.015); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing-half)); }
-      80%  { transform: translate3d(0.4%, -0.7%, 0) rotate(0.5deg) scale(1.03); font-variation-settings: "wght" var(--wght-base); }
-      100% { transform: translate3d(0, 0, 0) rotate(-1deg) scale(0.995); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing-half)); }
-    }
-    @keyframes float2 {
-      0%   { transform: translate3d(0, 0, 0) rotate(0.5deg) scale(1); font-variation-settings: "wght" var(--wght-base); }
-      20%  { transform: translate3d(-0.8%, 1%, 0) rotate(-1deg) scale(1.025); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing-half)); }
-      40%  { transform: translate3d(-1.4%, 1.6%, 0) rotate(-2deg) scale(1.045); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing)); }
-      60%  { transform: translate3d(1.1%, -1.1%, 0) rotate(1.5deg) scale(1.015); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing-half)); }
-      80%  { transform: translate3d(-0.7%, 0.5%, 0) rotate(-0.5deg) scale(1.03); font-variation-settings: "wght" var(--wght-base); }
-      100% { transform: translate3d(0, 0, 0) rotate(0.5deg) scale(1); font-variation-settings: "wght" var(--wght-base); }
-    }
-    @keyframes float3 {
-      0%   { transform: translate3d(0, 0, 0) rotate(-0.5deg) scale(0.995); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing-half)); }
-      20%  { transform: translate3d(1%, 0.5%, 0) rotate(0.8deg) scale(1.02); font-variation-settings: "wght" var(--wght-base); }
-      40%  { transform: translate3d(1.6%, 1.4%, 0) rotate(1.8deg) scale(1.045); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing)); }
-      60%  { transform: translate3d(-0.6%, -1.4%, 0) rotate(-1.4deg) scale(1.0); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing)); }
-      80%  { transform: translate3d(-1%, 0.3%, 0) rotate(-0.4deg) scale(1.025); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing-half)); }
-      100% { transform: translate3d(0, 0, 0) rotate(-0.5deg) scale(0.995); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing-half)); }
-    }
-    @keyframes float4 {
-      0%   { transform: translate3d(0, 0, 0) rotate(0.6deg) scale(1); font-variation-settings: "wght" var(--wght-base); }
-      20%  { transform: translate3d(-0.9%, -0.7%, 0) rotate(-1.2deg) scale(1.02); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing-half)); }
-      40%  { transform: translate3d(-1.5%, -0.5%, 0) rotate(-2deg) scale(1.045); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing)); }
-      60%  { transform: translate3d(1.3%, 1.3%, 0) rotate(1.4deg) scale(1.0); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing)); }
-      80%  { transform: translate3d(-0.7%, 0.7%, 0) rotate(-0.6deg) scale(1.025); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing-half)); }
-      100% { transform: translate3d(0, 0, 0) rotate(0.6deg) scale(1); font-variation-settings: "wght" var(--wght-base); }
-    }
-    .dots {
-      display: inline-flex;
-      gap: 0.1em;
-      transform: translateY(0.25em); /* nudge dots down */
-      white-space: nowrap;
-    }
-    .dot {
-      width: 0.18em;
-      height: 0.18em;
-      background: currentColor;
-      border-radius: 50%;
-      opacity: 0;
-      animation: pulse 5s ease-in-out infinite;
-    }
-    .dot:nth-child(2) { animation-delay: 0.2s; }
-    .dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes pulse {
-      0%   { opacity: 0.3; transform: translateY(0); }
-      15%  { opacity: 0.7; transform: translateY(calc(var(--dot-float) * -0.4)); }
-      30%  { opacity: 1; transform: translateY(calc(var(--dot-float) * -0.8)); }
-      45%  { opacity: 0.6; transform: translateY(calc(var(--dot-float) * 0.25)); }
-      60%  { opacity: 0.85; transform: translateY(calc(var(--dot-float) * -0.65)); }
-      75%  { opacity: 1; transform: translateY(calc(var(--dot-float) * -1)); }
-      90%  { opacity: 0.5; transform: translateY(calc(var(--dot-float) * 0.25)); }
-      100% { opacity: 0.3; transform: translateY(0); }
-    }
-    .cta {
-      margin-top: 32px;
-      padding: 0.55em 1.6em;
-      border-radius: 999px;
-      background: rgba(239, 134, 57, 0.12);
-      color: var(--accent);
-      font-family: "ohno-softie-variable", sans-serif;
-      font-size: clamp(20px, 4.5vw, 38px);
-      font-variation-settings: "wght" calc(var(--wght-base) + 80);
-      letter-spacing: 0.01em;
-      text-transform: lowercase;
-      box-shadow: 0 18px 38px rgba(239, 134, 57, 0.18), 0 6px 16px rgba(0, 0, 0, 0.06);
-      cursor: pointer;
-      transform-origin: 50% 50%;
-      animation: ctaBounce 5s ease-in-out infinite;
-      will-change: transform, font-variation-settings;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4ch;
-      text-decoration: none;
-      border: none;
-      max-width: 80vw;
-      width: auto;
-    }
-    .cta:hover {
-      background: rgba(239, 134, 57, 0.18);
-      box-shadow: 0 24px 48px rgba(239, 134, 57, 0.22), 0 10px 20px rgba(0, 0, 0, 0.08);
-      transform: translateY(-1px) scale(1.02);
-    }
-    @keyframes ctaBounce {
-      0%   { transform: translateY(0) scale(0.98); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing-half)); }
-      20%  { transform: translateY(-6px) scale(1.05); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing)); }
-      40%  { transform: translateY(3px) scale(1.0); font-variation-settings: "wght" calc(var(--wght-base) + 20); }
-      60%  { transform: translateY(-4px) scale(1.04); font-variation-settings: "wght" calc(var(--wght-base) + var(--wght-swing-half)); }
-      80%  { transform: translateY(2px) scale(0.99); font-variation-settings: "wght" calc(var(--wght-base) - 30); }
-      100% { transform: translateY(0) scale(0.98); font-variation-settings: "wght" calc(var(--wght-base) - var(--wght-swing-half)); }
-    }
-    @media (max-width: 768px) {
-      .cta {
-        padding: 0.5em 1.4em;
-        font-size: clamp(18px, 5vw, 32px);
-        margin-top: 28px;
-      }
-    }
-    @media (max-width: 480px) {
-      .cta {
-        padding: 0.45em 1.3em;
-        font-size: clamp(16px, 5.5vw, 28px);
-        margin-top: 24px;
-      }
-    }
-  </style>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/cursor.css">
 </head>
+
 <body>
-  <div class="scale">
-    <div class="logo-stack">
-      <img class="logo-cycle" src="src/colors/color1.svg" alt="Studio Node color logo">
-      <img class="logo" src="src/wordmark.svg" alt="Studio Node logo">
+  <!-- ====================================================================
+       DESKTOP - 3 (Figma node-id: 2065:893)
+       ==================================================================== -->
+  <main class="page" data-name="Desktop - 3" data-node-id="2065:893">
+
+    <!-- ================================================================
+         HERO BACKGROUNDS (Figma node-id: 2065:1200)
+         ================================================================ -->
+    <div class="hero-backgrounds" data-name="HERO BACKGROUNDS" data-node-id="2065:1200">
+      <div class="hero-backgrounds__gradient" data-name="Hero Background" data-node-id="2065:894"></div>
+      <div class="hero-backgrounds__fade" data-name="Gradienthero" data-node-id="2065:919"></div>
     </div>
-    <div class="hero">
-      <h1>
-        <span class="letter" style="--i:0">S</span>
-        <span class="letter" style="--i:1">i</span>
-        <span class="letter" style="--i:2">t</span>
-        <span class="letter" style="--i:3">e</span>
-        <span class="letter space" style="--i:4">&nbsp;</span>
-        <span class="letter" style="--i:5">c</span>
-        <span class="letter" style="--i:6">o</span>
-        <span class="letter" style="--i:7">m</span>
-        <span class="letter" style="--i:8">i</span>
-        <span class="letter" style="--i:9">n</span>
-        <span class="letter" style="--i:10">g</span>
-        <span class="letter space" style="--i:11">&nbsp;</span>
-        <span class="letter" style="--i:12">s</span>
-        <span class="letter" style="--i:13">o</span>
-        <span class="letter" style="--i:14">o</span>
-        <span class="letter" style="--i:15">n</span>
-      <span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
-    </h1>
-    <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdM660JB7UI0GZQxSTWWQwCLa1ZurlLZDdQD9YDecaX5vZ6-Q/viewform" target="_blank" rel="noopener">Contact us</a>
-  </div>
-</div>
+
+    <!-- ================================================================
+         NAV BUTTONS (Figma node-id: 2065:895)
+         ================================================================ -->
+    <nav class="nav-buttons" data-name="nav buttons" data-node-id="2065:895">
+      <button class="nav-buttons__menu" data-name="Menu" data-node-id="2065:896" aria-label="Open menu">
+        <img src="./assets/menu.svg" alt="Menu icon">
+      </button>
+    </nav>
+
+    <!-- ================================================================
+         HERO BODY (Figma node-id: 2065:899)
+         ================================================================ -->
+    <section class="hero-body" data-name="Hero Body" data-node-id="2065:899">
+
+      <!-- Horizontal Logo (Figma node-id: 2065:901) -->
+      <div class="horizontal-logo" data-name="Horizontal Logo" data-node-id="2065:901">
+        <!-- STUDIO text vectors -->
+        <div class="horizontal-logo__vector horizontal-logo__vector--s" data-name="Vector" data-node-id="2065:902">
+          <img src="./assets/v0.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--t" data-name="Vector" data-node-id="2065:903">
+          <img src="./assets/v1.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--u" data-name="Vector" data-node-id="2065:904">
+          <img src="./assets/v2.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--d" data-name="Vector" data-node-id="2065:905">
+          <img src="./assets/v3.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--i" data-name="Vector" data-node-id="2065:906">
+          <img src="./assets/v4.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--o" data-name="Vector" data-node-id="2065:907">
+          <img src="./assets/v5.svg" alt="">
+        </div>
+
+        <!-- NODE text vectors -->
+        <div class="horizontal-logo__vector horizontal-logo__vector--n" data-name="Vector" data-node-id="2065:908">
+          <img src="./assets/v6.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--o2" data-name="Vector" data-node-id="2065:909">
+          <img src="./assets/v7.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--d2" data-name="Vector" data-node-id="2065:910">
+          <img src="./assets/v8.svg" alt="">
+        </div>
+        <div class="horizontal-logo__vector horizontal-logo__vector--e" data-name="Vector" data-node-id="2065:911">
+          <img src="./assets/v9.svg" alt="">
+        </div>
+
+        <!-- Node Icon (Figma node-id: 2065:912) -->
+        <div class="horizontal-logo__icon" data-name="Node Icon" data-node-id="2065:912">
+          <img class="logo-animated" src="./assets/colors/color1.svg" alt="Studio Node animated logo">
+        </div>
+      </div>
+
+      <!-- Tagline -->
+      <h1 class="hero-body__tagline" data-name="PEOPLE CREATING FOR PEOPLE" data-node-id="2065:913">
+        <span class="text--black">PEOPLE</span> <span class="text--medium">CREATING FOR</span> <span
+          class="text--black">PEOPLE</span>
+      </h1>
+
+      <!-- Contact Button (Figma node-id: 2065:914) -->
+      <a href="#contact" class="hero-body__contact-button" data-name="contact button" data-node-id="2065:914">
+        <span class="hero-body__contact-button-text" data-name="GET IN TOUCH" data-node-id="2065:916">GET IN
+          TOUCH</span>
+      </a>
+    </section>
+
+    <!-- ================================================================
+         ORB DIVIDER
+         ================================================================ -->
+    <div class="orb-divider">
+      <!-- Orbs are dynamically generated by JavaScript based on page width -->
+    </div>
+
+    <!-- ================================================================
+         WHO WE ARE Section (Figma node-id: 2065:1202)
+         ================================================================ -->
+    <section class="who-we-are" data-name="WHO WE ARE" data-node-id="2065:1202">
+
+      <!-- Side Hands (Figma node-id: 2076:120) -->
+      <div class="who-we-are__side-hands" data-name="side hands" data-node-id="2076:120">
+        <div class="who-we-are__hand-wrapper">
+          <div class="who-we-are__left-side" data-name="left side" data-node-id="2065:933">
+            <img src="./assets/left-side.svg" alt="">
+          </div>
+        </div>
+        <div class="who-we-are__hand-wrapper">
+          <div class="who-we-are__right-side" data-name="right side" data-node-id="2065:923">
+            <img src="./assets/right-side.svg" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- Body content (Figma node-id: 2065:1217) -->
+      <div class="who-we-are__body" data-name="body" data-node-id="2065:1217">
+        <h2 class="who-we-are__title" data-name="WHO WE ARE" data-node-id="2065:921">WHO WE ARE</h2>
+        <p class="who-we-are__description"
+          data-name="A design and development studio that aims to give young professionals valuable skills and meaningful experience."
+          data-node-id="2065:922">
+          A <strong>design</strong> and <strong>development</strong> studio that aims to give young professionals
+          valuable skills and meaningful experience.
+        </p>
+      </div>
+
+      <!-- Heart Hands (Figma node-id: 2065:1203) -->
+      <div class="who-we-are__heart-hands" data-name="Heart Hands" data-node-id="2065:1203">
+        <img src="./assets/heart-hands.svg" alt="Heart hands illustration">
+      </div>
+    </section>
+
+    <!-- ================================================================
+         BAR SEPARATOR (Figma node-id: 2065:1218)
+         ================================================================ -->
+    <div class="bar-separator" data-name="BarSeperator" data-node-id="2065:1218">
+      <img src="./assets/bar-seperator.svg" alt="">
+    </div>
+
+    <!-- ================================================================
+         WHAT CREATE Section (Figma node-id: 2065:1220)
+         ================================================================ -->
+    <section class="what-create" data-name="WHAT CREATE" data-node-id="2065:1220">
+      <h2 class="what-create__title" data-name="WHAT WE'VE CREATED" data-node-id="2065:947">WHAT WE'VE CREATED</h2>
+
+      <!-- Project Reel (Figma node-id: 2065:949) - DIMMED/PREVIEW MODE -->
+      <div class="portfolio-container portfolio-container--dimmed">
+        <div class="scroller-arrow scroller-arrow--left"></div>
+        <div class="scroller-arrow scroller-arrow--right"></div>
+        <div class="portfolio-grid">
+          <!-- Item 1: Utah Tech -->
+          <div class="portfolio-item">
+            <div class="portfolio-item__image-wrapper">
+              <img src="./assets/portfolio-1.png" alt="Utah Tech Graduation Fair">
+            </div>
+            <div class="portfolio-item__caption">
+              <p>UTAH TECH GRADUATION FAIR</p>
+            </div>
+          </div>
+
+          <!-- Item 2: Argo -->
+          <div class="portfolio-item">
+            <div class="portfolio-item__image-wrapper">
+              <img src="./assets/portfolio-argo-new.png" alt="Argo">
+            </div>
+            <div class="portfolio-item__caption">
+              <p>ARGO</p>
+            </div>
+          </div>
+
+          <!-- Item 3: The Battery -->
+          <div class="portfolio-item">
+            <div class="portfolio-item__image-wrapper">
+              <img src="./assets/portfolio-battery-new.png" alt="The Battery">
+            </div>
+            <div class="portfolio-item__caption">
+              <p>THE BATTERY</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming Soon Floating Text -->
+      <div class="coming-soon-wrapper">
+        <h2 class="coming-soon-text">
+          <span class="coming-soon-letter" style="--i:0">c</span>
+          <span class="coming-soon-letter" style="--i:1">o</span>
+          <span class="coming-soon-letter" style="--i:2">m</span>
+          <span class="coming-soon-letter" style="--i:3">i</span>
+          <span class="coming-soon-letter" style="--i:4">n</span>
+          <span class="coming-soon-letter" style="--i:5">g</span>
+          <span class="coming-soon-letter coming-soon-space" style="--i:6">&nbsp;</span>
+          <span class="coming-soon-letter" style="--i:7">s</span>
+          <span class="coming-soon-letter" style="--i:8">o</span>
+          <span class="coming-soon-letter" style="--i:9">o</span>
+          <span class="coming-soon-letter" style="--i:10">n</span>
+          <span class="coming-soon-dots"><span class="coming-soon-dot"></span><span class="coming-soon-dot"></span><span
+              class="coming-soon-dot"></span></span>
+        </h2>
+        <p class="coming-soon-subtext">we can't wait to show you what we've been working on.</p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SQUIGGLY LINE (Figma node-id: 2065:1006)
+         ================================================================ -->
+    <div class="squiggly-line">
+      <img src="./assets/squiggly-new.svg" alt="Squiggly line decoration">
+    </div>
+
+    <!-- ================================================================
+         WHAT WE ARE Section (Figma node-id: 2065:1223)
+         ================================================================ -->
+    <section class="what-we-are" data-name="WHAT WE ARE" data-node-id="2065:1223">
+      <h2 class="what-we-are__title" data-name="WHAT WE ARE" data-node-id="2065:948">WHAT WE ARE</h2>
+
+      <div class="what-we-are__content" data-node-id="2065:943">
+        <p><span class="text--extrabold">COMMUNITY DRIVEN</span> DEDICATED TO MAKING <span class="text--extrabold">COOL
+            THINGS</span> &amp; <span class="text--extrabold">MAKING AN IMPACT</span> WHILE WE DO IT. WE'RE <span
+            class="text--extrabold">EXCITED CREATIVES</span>, LEARNERS, MAKERS, AND <span
+            class="text--extrabold">EXPERIMENTERS</span>. A SMALL TEAM THAT <span class="text--extrabold">MOVES FAST,
+            PLAYS OFTEN</span> &amp; DELIVERS <span class="text--extrabold">PROFESSIONAL-LEVEL RESULTS.</span></p>
+        <p class="what-we-are__cta-text">AND... WE WOULD <span class="text--extrabold text--italic">LOVE</span> TO HEAR
+          FROM YOU.</p>
+      </div>
+
+      <!-- Contact Button (Duplicate from Hero) -->
+      <a href="#contact" class="hero-body__contact-button" data-name="contact button">
+        <span class="hero-body__contact-button-text">GET IN TOUCH</span>
+      </a>
+    </section>
+
+    <!-- ================================================================
+         FOOTER (Figma node-id: 2065:1225)
+         ================================================================ -->
+    <footer class="footer" data-name="FOOTER" data-node-id="2065:1225" id="contact">
+
+      <!-- Footer Gradient (Figma node-id: 2065:1219) -->
+      <div class="footer__gradient" data-name="FooterGradient" data-node-id="2065:1219"></div>
+
+      <!-- Footer Outline (Figma node-id: 2065:1226) -->
+      <div class="footer__outline" data-name="footer outline" data-node-id="2065:1226">
+
+        <!-- Get In Touch Reel (Removed) -->
+
+      </div>
+
+      <!-- Holding Hands (Removed) -->
+
+    </footer>
+
+  </main>
+
+  <!-- JavaScript -->
+  <script src="./js/main.js"></script>
 </body>
-<script>
-  (function() {
-    const frames = [
-      "src/colors/color1.svg",
-      "src/colors/color2.svg",
-      "src/colors/color3.svg",
-      "src/colors/color4.svg",
-      "src/colors/color5.svg"
-    ];
-    const logo = document.querySelector('.logo-cycle');
-    if (!logo) return;
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % frames.length;
-      logo.src = frames[idx];
-    }, 500);
-  })();
-</script>
+
 </html>
