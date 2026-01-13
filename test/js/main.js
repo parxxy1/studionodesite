@@ -23,6 +23,115 @@
     initScrollAnimations();
     initInfiniteScroll();
     initLogoAnimation();
+    initOrbWave();
+  }
+
+  // ==========================================================================
+  // Dynamic Orb Generation and Interactive Wave
+  // ==========================================================================
+
+  function initOrbWave() {
+    const container = document.querySelector('.orb-divider');
+    if (!container) return;
+
+    const shapes = ['circle', 'square'];
+    const colors = ['orange', 'sky', 'laguna', 'citra'];
+    const sizes = ['tiny', 'small', 'medium', 'large', 'xlarge'];
+    const averageShapeSize = 25;
+
+    function generateShapes() {
+      container.innerHTML = '';
+
+      // Calculate how many shapes needed to fill the width (with overlap)
+      const containerWidth = window.innerWidth + 40;
+      const shapeCount = Math.ceil(containerWidth / (averageShapeSize - 8));
+
+      let lastColor = null; // Track previous color to avoid repetition
+
+      for (let i = 0; i < shapeCount; i++) {
+        const shape = document.createElement('div');
+        shape.classList.add('shape');
+
+        // Random shape type
+        const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+        shape.classList.add(`shape--${shapeType}`);
+
+        // Random color (but not the same as the previous shape)
+        const availableColors = colors.filter(c => c !== lastColor);
+        const color = availableColors[Math.floor(Math.random() * availableColors.length)];
+        lastColor = color;
+        shape.classList.add(`shape--${color}`);
+
+        // Random size
+        const size = sizes[Math.floor(Math.random() * sizes.length)];
+        shape.classList.add(`shape--${size}`);
+
+        // Slight random rotation for irregular feel
+        const rotation = (Math.random() - 0.5) * 30;
+        shape.style.transform = `rotate(${rotation}deg)`;
+
+        // Wavy vertical offset using sine wave + slight randomness
+        const waveAmplitude = 25;
+        const waveFrequency = 0.3;
+        const sineOffset = Math.sin(i * waveFrequency) * waveAmplitude;
+        const randomOffset = (Math.random() - 0.5) * 6;
+        shape.style.marginTop = `${sineOffset + randomOffset}px`;
+
+        container.appendChild(shape);
+      }
+
+      setupMouseInteraction();
+    }
+
+    function setupMouseInteraction() {
+      const shapes = document.querySelectorAll('.orb-divider .shape');
+      const container = document.querySelector('.orb-divider');
+
+      document.addEventListener('mousemove', function (e) {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        const containerRect = container.getBoundingClientRect();
+        const containerCenterY = containerRect.top + containerRect.height / 2;
+        const direction = mouseY < containerCenterY ? -1 : 1;
+
+        shapes.forEach(function (shape) {
+          const rect = shape.getBoundingClientRect();
+          const shapeCenterX = rect.left + rect.width / 2;
+          const distanceX = Math.abs(mouseX - shapeCenterX);
+          const maxDistance = 150;
+
+          // Get existing rotation from data attribute or compute it
+          let rotation = shape.dataset.rotation;
+          if (!rotation) {
+            const currentTransform = shape.style.transform;
+            const match = currentTransform.match(/rotate\(([^)]+)\)/);
+            rotation = match ? match[1] : '0deg';
+            shape.dataset.rotation = rotation;
+          }
+
+          if (distanceX < maxDistance) {
+            const intensity = 1 - (distanceX / maxDistance);
+            const translateY = direction * 25 * intensity;
+            const scale = 1 + (0.1 * intensity);
+
+            shape.style.transform = `translateY(${translateY}px) scale(${scale}) rotate(${rotation})`;
+          } else {
+            shape.style.transform = `rotate(${rotation})`;
+          }
+        });
+      });
+    }
+
+    // Generate shapes on load
+    generateShapes();
+
+    // Regenerate on resize (debounced)
+    let resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(generateShapes, 250);
+    });
   }
 
   // ==========================================================================
@@ -34,11 +143,11 @@
     if (!logo) return;
 
     const frames = [
-      "/test/assets/colors/color1.svg",
-      "/test/assets/colors/color2.svg",
-      "/test/assets/colors/color3.svg",
-      "/test/assets/colors/color4.svg",
-      "/test/assets/colors/color5.svg"
+      "./assets/colors/color1.svg",
+      "./assets/colors/color2.svg",
+      "./assets/colors/color3.svg",
+      "./assets/colors/color4.svg",
+      "./assets/colors/color5.svg"
     ];
 
     let idx = 0;
@@ -123,12 +232,38 @@
   // ==========================================================================
 
   function initScrollAnimations() {
-    // Check for Intersection Observer support
-    if (!('IntersectionObserver' in window)) {
-      // Fallback: just show everything
-      document.querySelectorAll('.who-we-are, .what-create, .what-we-are').forEach(function (el) {
-        el.classList.add('is-visible');
+    // Mouse enter/leave for title wave animations with 3-second cooldown
+    const animatedSections = document.querySelectorAll('.what-create, .what-we-are, .who-we-are');
+    const cooldownTime = 3000; // 3 seconds
+
+    animatedSections.forEach(function (section) {
+      let lastTriggered = 0;
+
+      section.addEventListener('mouseenter', function () {
+        const now = Date.now();
+
+        // Check if cooldown has passed
+        if (now - lastTriggered < cooldownTime) {
+          return; // Still in cooldown, don't trigger
+        }
+
+        lastTriggered = now;
+
+        // Remove class first to reset animation
+        this.classList.remove('is-hovered');
+        // Force reflow to restart animation
+        void this.offsetWidth;
+        // Add class to trigger animation
+        this.classList.add('is-hovered');
       });
+
+      section.addEventListener('mouseleave', function () {
+        this.classList.remove('is-hovered');
+      });
+    });
+
+    // Keep intersection observer for footer
+    if (!('IntersectionObserver' in window)) {
       return;
     }
 
@@ -142,14 +277,14 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          // Optionally unobserve after animation
-          // observer.unobserve(entry.target);
+        } else {
+          entry.target.classList.remove('is-visible');
         }
       });
     }, options);
 
-    // Observe main sections
-    const sections = document.querySelectorAll('.who-we-are, .what-create, .what-we-are, .footer');
+    // Observe footer
+    const sections = document.querySelectorAll('.footer');
     sections.forEach(function (section) {
       observer.observe(section);
     });
@@ -313,40 +448,172 @@
     const track = document.querySelector('.portfolio-grid');
     if (!track) return;
 
-    // Check if already duplicated to avoid infinite loops
-    if (track.getAttribute('data-duplicated') === 'true') return;
+    const originalItems = Array.from(track.children);
+    if (originalItems.length === 0) return;
 
-    const originalChildren = Array.from(track.children);
-    if (originalChildren.length === 0) return;
+    // 1.5 Assign static colors to original items before cloning
+    // This prevents :nth-child color shifting when the list wraps
+    const brandColors = [
+      'var(--color-node-orange)',
+      'var(--color-digital-sky)',
+      'var(--color-citra)',
+      'var(--color-laguna)'
+    ];
 
-    // Calculate how many repetitions of the original set we need to fill the screen
-    // Estimate item width (card + gap) = 400 + 50 = 450px
-    // Use a robust width target (e.g., 2500px) to cover large screens
-    const itemWidth = 450;
-    const minWidth = Math.max(window.innerWidth * 1.5, 2500);
-    const currentSetWidth = originalChildren.length * itemWidth;
+    originalItems.forEach((item, index) => {
+      const color = brandColors[index % brandColors.length];
+      item.style.setProperty('--item-color', color);
 
-    // Calculate how many total sets we need to form one "half" of the loop
-    let setsNeeded = Math.ceil(minWidth / currentSetWidth);
-    if (setsNeeded < 1) setsNeeded = 1;
+      // If it's the Citra Yellow color, add a class for dark text
+      if (color === 'var(--color-citra)') {
+        item.classList.add('portfolio-item--dark-text');
+      }
+    });
 
-    // Append (setsNeeded - 1) copies to form the full first half
-    for (let i = 1; i < setsNeeded; i++) {
-      originalChildren.forEach(child => {
-        track.appendChild(child.cloneNode(true));
+    // Estimate width. For robustness, we'll just clone the original set X times to ensure
+    // we have a wide enough "base" strip, then duplicate that entire strip.
+    // Let's aim for at least 2000px base strip.
+    const itemWidthEstimate = 300; // conservative estimate (250px + 50px gap)
+    const minStripWidth = Math.max(window.innerWidth * 1.5, 2500);
+    const initialTotalWidth = originalItems.length * itemWidthEstimate;
+
+    let clonesNeeded = Math.ceil(minStripWidth / initialTotalWidth);
+    if (clonesNeeded < 1) clonesNeeded = 1;
+
+    // Create the "base" strip
+    for (let c = 1; c < clonesNeeded; c++) {
+      originalItems.forEach(item => {
+        track.appendChild(item.cloneNode(true));
       });
     }
 
-    // Now duplicate the entire first half for the endless loop effect
-    const halfChildren = Array.from(track.children);
-    halfChildren.forEach(child => {
+    // Now duplicated the ENTIRE base strip once to create the loop reference
+    // So distinct items: A B C -> A B C A B C (Base Strip) -> A B C A B C A B C A B C (Full)
+    const baseChildren = Array.from(track.children);
+    baseChildren.forEach(child => {
       const clone = child.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       track.appendChild(clone);
     });
 
-    track.setAttribute('data-duplicated', 'true');
+    // 2. State & Config
+    let scrollPos = 0;
+    let isHovered = false;
+    let cursorXRelative = 0.5; // 0 (left) to 1 (right)
+    const arrowLeft = document.querySelector('.scroller-arrow--left');
+    const arrowRight = document.querySelector('.scroller-arrow--right');
+
+    // Total width of ONE set (the point where we wrap)
+    // We'll calculate this accurately after render and on resize
+    let wrapWidth = 0;
+
+    function calculateWrapWidth() {
+      const firstItem = track.children[0];
+      const firstClone = track.querySelector('[aria-hidden="true"]');
+
+      if (firstItem && firstClone) {
+        // Use getBoundingClientRect for sub-pixel precision
+        const rect1 = firstItem.getBoundingClientRect();
+        const rect2 = firstClone.getBoundingClientRect();
+        wrapWidth = rect2.left - rect1.left;
+      }
+    }
+
+    // Initial calculation
+    calculateWrapWidth();
+
+    // Also recalculate when images load to handle changing widths
+    const images = track.querySelectorAll('img');
+    images.forEach(img => {
+      if (img.complete) {
+        calculateWrapWidth();
+      } else {
+        img.addEventListener('load', calculateWrapWidth);
+      }
+    });
+
+    const settings = {
+      idleSpeed: -0.5,    // px per frame (move left) - halved from -1
+      maxHoverSpeed: 3,   // Much slower user scroll speed
+      baseHoverSpeed: 0  // Speed at center
+    };
+
+    // 3. Update Function
+    function update() {
+      if (wrapWidth === 0) {
+        calculateWrapWidth();
+        if (wrapWidth === 0) {
+          requestAnimationFrame(update);
+          return;
+        }
+      }
+
+      let targetSpeed = settings.idleSpeed;
+
+      if (isHovered) {
+        // Calculate speed based on cursor position
+        // 60% center deadzone: 0.2 to 0.8
+        if (cursorXRelative >= 0.2 && cursorXRelative <= 0.8) {
+          targetSpeed = 0;
+          if (arrowLeft) arrowLeft.classList.remove('is-visible');
+          if (arrowRight) arrowRight.classList.remove('is-visible');
+        } else if (cursorXRelative < 0.2) {
+          // One set scrolling speed when hovering
+          targetSpeed = settings.maxHoverSpeed;
+          if (arrowLeft) arrowLeft.classList.add('is-visible');
+          if (arrowRight) arrowRight.classList.remove('is-visible');
+        } else {
+          // One set scrolling speed when hovering
+          targetSpeed = -settings.maxHoverSpeed;
+          if (arrowLeft) arrowLeft.classList.remove('is-visible');
+          if (arrowRight) arrowRight.classList.add('is-visible');
+        }
+      } else {
+        if (arrowLeft) arrowLeft.classList.remove('is-visible');
+        if (arrowRight) arrowRight.classList.remove('is-visible');
+      }
+
+      scrollPos += targetSpeed;
+
+      // Wrap logic
+      if (scrollPos <= -wrapWidth) {
+        scrollPos += wrapWidth;
+      }
+      else if (scrollPos > 0) {
+        scrollPos -= wrapWidth;
+      }
+
+      track.style.transform = `translate3d(${scrollPos}px, 0, 0)`;
+
+      requestAnimationFrame(update);
+    }
+
+    // 4. Events
+    const interactionZone = document.querySelector('.portfolio-grid'); // or .what-create
+
+    interactionZone.addEventListener('mouseenter', () => {
+      isHovered = true;
+      calculateWrapWidth();
+    });
+
+    interactionZone.addEventListener('mouseleave', () => {
+      isHovered = false;
+    });
+
+    interactionZone.addEventListener('mousemove', (e) => {
+      // get X relative to screen width
+      // using window.innerWidth is safest for full-screen "steering" feel
+      // or use rect of container if boxed. Grid is full width mostly.
+      cursorXRelative = e.clientX / window.innerWidth;
+    });
+
+    // Handle Window Resize
+    window.addEventListener('resize', () => {
+      calculateWrapWidth();
+    });
+
+    // Start loop
+    requestAnimationFrame(update);
   }
 
 })();
-
