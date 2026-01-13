@@ -7,13 +7,51 @@
   'use strict';
 
   // ==========================================================================
-  // DOM Ready
+  // DOM Ready - with scroll position restoration handling
   // ==========================================================================
 
+  // Store references to functions that need recalculation
+  let recalculateFunctions = [];
+
+  function registerRecalculate(fn) {
+    recalculateFunctions.push(fn);
+  }
+
+  function triggerRecalculate() {
+    recalculateFunctions.forEach(fn => fn());
+  }
+
+  // Safe initialization that handles scroll position restoration
+  function safeInit() {
+    // Temporarily scroll to top to ensure accurate width calculations
+    // (browsers restore scroll position which can cause off-screen elements to miscalculate)
+    const savedScrollY = window.scrollY;
+    window.scrollTo(0, 0);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        initAll();
+
+        // Restore scroll position after initialization
+        if (savedScrollY > 0) {
+          window.scrollTo(0, savedScrollY);
+        }
+
+        // Recalculate again after a short delay to handle any remaining issues
+        setTimeout(triggerRecalculate, 100);
+      });
+    });
+  }
+
+  // Also recalculate when window fully loads (images, fonts, etc.)
+  window.addEventListener('load', () => {
+    setTimeout(triggerRecalculate, 50);
+  });
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAll);
+    document.addEventListener('DOMContentLoaded', safeInit);
   } else {
-    initAll();
+    safeInit();
   }
 
   function initAll() {
@@ -43,7 +81,13 @@
       container.innerHTML = '';
 
       // Calculate how many shapes needed to fill the width (with overlap)
-      const containerWidth = window.innerWidth + 40;
+      // Use Math.max with multiple sources to handle edge cases on load
+      const viewportWidth = Math.max(
+        window.innerWidth || 0,
+        document.documentElement.clientWidth || 0,
+        1200 // Minimum fallback width
+      );
+      const containerWidth = viewportWidth + 40;
       const shapeCount = Math.ceil(containerWidth / (averageShapeSize - 8));
 
       let lastColor = null; // Track previous color to avoid repetition
@@ -125,6 +169,9 @@
 
     // Generate shapes on load
     generateShapes();
+
+    // Register for recalculation (handles scroll restore scenarios)
+    registerRecalculate(generateShapes);
 
     // Regenerate on resize (debounced)
     let resizeTimer;
@@ -515,12 +562,24 @@
         // Use getBoundingClientRect for sub-pixel precision
         const rect1 = firstItem.getBoundingClientRect();
         const rect2 = firstClone.getBoundingClientRect();
-        wrapWidth = rect2.left - rect1.left;
+        const calculatedWidth = rect2.left - rect1.left;
+
+        // Only use the calculated width if it's valid (positive and reasonable)
+        if (calculatedWidth > 0) {
+          wrapWidth = calculatedWidth;
+        } else {
+          // Fallback: estimate based on number of original items
+          const itemCount = track.querySelectorAll('.portfolio-item:not([aria-hidden])').length;
+          wrapWidth = itemCount * 300; // 250px item + 50px gap
+        }
       }
     }
 
     // Initial calculation
     calculateWrapWidth();
+
+    // Register for recalculation (handles scroll restore scenarios)
+    registerRecalculate(calculateWrapWidth);
 
     // Also recalculate when images load to handle changing widths
     const images = track.querySelectorAll('img');

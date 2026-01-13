@@ -867,8 +867,8 @@ animation-delay: 2s;
 
 .coming-soon-subtext {
   font-family: var(--font-proxima);
-  font-size: clamp(16px, 3vw, 24px);
-  font-weight: var(--font-weight-medium);
+  font-size: 25px;
+  font-weight: 600;
   color: var(--color-node-orange);
   margin-top: -30px;
   text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
@@ -1103,8 +1103,9 @@ animation-delay: 2s;
   overflow: hidden;
 }
 
-/* Dimmed/Preview State for Portfolio */
+/* Dimmed/Preview State for Portfolio - HIDDEN but preserves height */
 .portfolio-container--dimmed {
+  visibility: hidden;
   pointer-events: none;
 }
 
