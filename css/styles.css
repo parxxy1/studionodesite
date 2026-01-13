@@ -1400,6 +1400,7 @@ animation-delay: 2s;
   color: var(--color-node-orange);
   text-shadow: var(--text-shadow-section);
   padding-bottom: 30px;
+  padding-top: 50px;
 }
 
 .what-we-are.is-hovered .what-we-are__title {
@@ -1414,7 +1415,7 @@ animation-delay: 2s;
   letter-spacing: -1.3px;
   color: var(--color-node-orange);
   text-transform: uppercase;
-  max-width: 70%;
+  max-width: 80%;
   text-align: left;
 }
 

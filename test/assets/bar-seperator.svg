@@ -1,8 +1,0 @@
-<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 1438 91" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="BarSeperator">
-<rect id="OrangeBar" width="1438" height="23" transform="matrix(1 0 0 -1 0 23)" fill="var(--fill-0, #FF7F19)"/>
-<rect id="YellowBar" width="1438" height="22" transform="matrix(1 0 0 -1 0 45)" fill="var(--fill-0, #E5FC2F)"/>
-<path id="BlueBar" d="M0 68H1438V45H0V68Z" fill="var(--fill-0, #69E5FF)"/>
-<path id="TealBar" d="M0 91H1438V68H0V91Z" fill="var(--fill-0, #11DECD)"/>
-</g>
-</svg>
