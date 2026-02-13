@@ -36,10 +36,17 @@
     <!-- ================================================================
          NAV BUTTONS (Figma node-id: 2065:895)
          ================================================================ -->
-    <nav class="nav-buttons" data-name="nav buttons" data-node-id="2065:895">
-      <button class="nav-buttons__menu" data-name="Menu" data-node-id="2065:896" aria-label="Open menu">
-        <img src="./assets/menu.svg" alt="Menu icon">
-      </button>
+    <!-- ================================================================
+         GLOBAL NAVIGATION (Figma: 2407:175)
+         ================================================================ -->
+    <nav class="global-nav" data-name="nav" data-node-id="2407:175">
+      <!-- Node Icon (Logo) - Icon Only (Hidden on Home Page) -->
+      <div class="global-nav__logo" data-name="Node Icon" data-node-id="2407:176"
+        onclick="window.location.href='./index.html'" style="visibility: hidden;">
+        <img class="logo-animated" src="./assets/colors/color1.svg" alt="Studio Node animated logo">
+      </div>
+
+
     </nav>
 
     <!-- ================================================================
@@ -160,61 +167,41 @@
     <section class="what-create" data-name="WHAT CREATE" data-node-id="2065:1220">
       <h2 class="what-create__title" data-name="WHAT WE'VE CREATED" data-node-id="2065:947">WHAT WE'VE CREATED</h2>
 
-      <!-- Project Reel (Figma node-id: 2065:949) - DIMMED/PREVIEW MODE -->
-      <div class="portfolio-container portfolio-container--dimmed">
+      <!-- Project Reel (Figma node-id: 2065:949) -->
+      <div class="portfolio-container">
         <div class="scroller-arrow scroller-arrow--left"></div>
         <div class="scroller-arrow scroller-arrow--right"></div>
         <div class="portfolio-grid">
           <!-- Item 1: Utah Tech -->
-          <div class="portfolio-item">
+          <a href="./utgradfairs.html" class="portfolio-item portfolio-item--link">
             <div class="portfolio-item__image-wrapper">
               <img src="./assets/portfolio-1.png" alt="Utah Tech Graduation Fair">
             </div>
             <div class="portfolio-item__caption">
               <p>UTAH TECH GRADUATION FAIR</p>
             </div>
-          </div>
+          </a>
 
           <!-- Item 2: Argo -->
-          <div class="portfolio-item">
+          <a href="./argo.html" class="portfolio-item portfolio-item--link">
             <div class="portfolio-item__image-wrapper">
               <img src="./assets/portfolio-argo-new.png" alt="Argo">
             </div>
             <div class="portfolio-item__caption">
               <p>ARGO</p>
             </div>
-          </div>
+          </a>
 
-          <!-- Item 3: The Battery -->
-          <div class="portfolio-item">
+          <!-- Item 3: UTXplore -->
+          <a href="./utxplore.html" class="portfolio-item portfolio-item--link">
             <div class="portfolio-item__image-wrapper">
-              <img src="./assets/portfolio-battery-new.png" alt="The Battery">
+              <img src="./assets/UTXplore_mainflyer.jpg" alt="UTXplore flyer">
             </div>
             <div class="portfolio-item__caption">
-              <p>THE BATTERY</p>
+              <p>UTXPLORE</p>
             </div>
-          </div>
+          </a>
         </div>
-      </div>
-
-      <!-- Coming Soon Floating Text -->
-      <div class="coming-soon-wrapper">
-        <h2 class="coming-soon-text">
-          <span class="coming-soon-letter" style="--i:0">c</span>
-          <span class="coming-soon-letter" style="--i:1">o</span>
-          <span class="coming-soon-letter" style="--i:2">m</span>
-          <span class="coming-soon-letter" style="--i:3">i</span>
-          <span class="coming-soon-letter" style="--i:4">n</span>
-          <span class="coming-soon-letter" style="--i:5">g</span>
-          <span class="coming-soon-letter coming-soon-space" style="--i:6">&nbsp;</span>
-          <span class="coming-soon-letter" style="--i:7">s</span>
-          <span class="coming-soon-letter" style="--i:8">o</span>
-          <span class="coming-soon-letter" style="--i:9">o</span>
-          <span class="coming-soon-letter" style="--i:10">n</span>
-          <span class="coming-soon-dots"><span class="coming-soon-dot"></span><span class="coming-soon-dot"></span><span
-              class="coming-soon-dot"></span></span>
-        </h2>
-        <p class="coming-soon-subtext">We can't wait to show you what we've been working on.</p>
       </div>
     </section>
 

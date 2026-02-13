@@ -1,0 +1,432 @@
+/* ==========================================================================
+   UT Grad Fairs Case Study Page Styles
+   Follows Figma design: node-id 2404:155
+   Fluid/Responsive - All sizes scale with viewport
+   ========================================================================== */
+
+.utgradfairs-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: var(--color-opal-white);
+    position: relative;
+    overflow-x: hidden;
+    opacity: 0;
+    animation: utgradfairs-fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes utgradfairs-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   Page Title Section
+   Figma: 159px side padding, 92px vertical padding, opal white bg
+   ========================================================================== */
+.utgradfairs-page-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: clamp(50px, 6.4vw, 92px) clamp(40px, 11vw, 159px);
+}
+
+.utgradfairs-page-title__heading {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-black);
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: 1.01;
+    letter-spacing: -0.01em;
+    color: #00366a;
+    margin: 0 0 clamp(6px, 0.7vw, 10px) 0;
+    padding-top: clamp(-20px, -5.5vw, -40px);
+    width: 100%;
+}
+
+.utgradfairs-page-title__subtitle-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.utgradfairs-page-title__subtitle {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-black);
+    font-size: clamp(16px, 1.67vw, 24px);
+    line-height: 1.202;
+    letter-spacing: -0.005em;
+    color: #00366a;
+    margin: 0;
+    max-width: clamp(600px, 67.5vw, 972px);
+}
+
+/* ==========================================================================
+   Hero Section (Dark video/embed area)
+   Figma: Black bg, 499px height, centered content
+   ========================================================================== */
+.utgradfairs-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: clamp(280px, 34.7vw, 499px);
+    background-color: #000000;
+    padding: clamp(15px, 2vw, 29px) clamp(60px, 9vw, 129px);
+    position: relative;
+}
+
+.utgradfairs-hero__video-container {
+    width: clamp(400px, 57.8vw, 832px);
+    height: clamp(240px, 30.2vw, 435px);
+    position: relative;
+    overflow: hidden;
+}
+
+.utgradfairs-hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.2);
+}
+
+/* ==========================================================================
+   Scope & Client Bar
+   Figma: #00366a bg, white text, 162px height, centered, gap 193px
+   ========================================================================== */
+.utgradfairs-scope-bar {
+    width: 100%;
+    min-height: clamp(120px, 11.25vw, 162px);
+    background-color: #00366a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(25px, 2.8vw, 40px) 0;
+    position: relative;
+}
+
+.utgradfairs-scope-bar__content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    gap: clamp(60px, 13.4vw, 193px);
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 clamp(40px, 10vw, 144px);
+    font-family: var(--font-proxima);
+    color: #ffffff;
+}
+
+.utgradfairs-scope-bar__scope {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.utgradfairs-scope-bar__client {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(140px, 12.5vw, 180px);
+}
+
+.utgradfairs-scope-bar__heading {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(22px, 2.5vw, 36px);
+    line-height: 1.202;
+    color: #ffffff;
+    margin: 0 0 clamp(4px, 0.4vw, 6px) 0;
+}
+
+.utgradfairs-scope-bar__item {
+    font-family: var(--font-proxima);
+    font-weight: 400;
+    font-size: clamp(14px, 1.39vw, 20px);
+    line-height: 1.202;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Video Section
+   Figma: 1052px wide, shadow, 16:9 aspect ratio, 88px vertical padding
+   ========================================================================== */
+.utgradfairs-video-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(40px, 6.1vw, 88px) clamp(20px, 5vw, 100px);
+    background-color: var(--color-opal-white);
+}
+
+.utgradfairs-video-section__player-wrap {
+    width: 100%;
+    max-width: clamp(400px, 73.1vw, 1052px);
+    aspect-ratio: 1280 / 720;
+
+    overflow: hidden;
+    position: relative;
+    background-color: #18181d;
+}
+
+.utgradfairs-video-section__player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==========================================================================
+   Body Section (The Project, The Challenge, The Approach)
+   Figma: 190px side padding, 83px top padding, 64px gap between blocks
+   ========================================================================== */
+.utgradfairs-body {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: clamp(50px, 5.8vw, 83px) clamp(40px, 13.2vw, 190px);
+    padding-bottom: clamp(50px, 13.3vw, 191px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 4.44vw, 64px);
+}
+
+.utgradfairs-body__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.utgradfairs-body__heading {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(26px, 2.78vw, 40px);
+    line-height: normal;
+    color: #00366a;
+    margin: 0;
+}
+
+.utgradfairs-body__text {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-medium);
+    font-size: clamp(14px, 1.39vw, 20px);
+    line-height: 1.202;
+    color: #00366a;
+    margin: 0;
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   What We Made Section
+   Figma: Navy header bar, complex image composition
+   ========================================================================== */
+.utgradfairs-whatwemade {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header: Navy bg, white text */
+.utgradfairs-whatwemade__header {
+    width: 100%;
+    background-color: #00366a;
+    padding: clamp(17px, 1.2vw, 17px) clamp(40px, 7vw, 101px);
+    display: flex;
+    align-items: center;
+    min-height: clamp(60px, 6.7vw, 97px);
+}
+
+.utgradfairs-whatwemade__title {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: normal;
+    color: #ffffff;
+    margin: 0;
+    flex: 1;
+}
+
+/* Content: Side-by-side panels */
+.utgradfairs-whatwemade__content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    padding: clamp(50px, 6.9vw, 99px) 0;
+}
+
+/* Left panel: AR Poster image */
+.utgradfairs-whatwemade__poster-panel {
+    flex: 0 0 auto;
+    width: clamp(150px, 19.8vw, 285px);
+    display: flex;
+    align-items: flex-start;
+}
+
+.utgradfairs-whatwemade__poster-img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.utgradfairs-whatwemade__poster-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Right panel: Hand holding iPhone */
+.utgradfairs-whatwemade__phone-scene {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.utgradfairs-whatwemade__phone-img {
+    width: clamp(400px, 52.5vw, 756px);
+    position: relative;
+}
+
+.utgradfairs-whatwemade__phone-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Screen recording overlay on phone */
+.utgradfairs-whatwemade__screen-recording {
+    position: absolute;
+    top: 41%;
+    left: 48.5%;
+    transform: translate(-50%, -50%) rotate(-1deg);
+    width: 20%;
+    height: auto;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   The Outcome Section
+   Figma: 1060px wide, navy text
+   ========================================================================== */
+.utgradfairs-outcome {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: clamp(18px, 2.85vw, 36px) clamp(40px, 13.2vw, 190px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 50px;
+}
+
+.utgradfairs-outcome__text {
+    width: 100%;
+    max-width: clamp(500px, 73.6vw, 1060px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.49vw, 7px);
+}
+
+.utgradfairs-outcome__heading {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: normal;
+    color: #00366a;
+    margin: 0;
+
+}
+
+.utgradfairs-outcome__paragraph {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-medium);
+    font-size: clamp(14px, 1.39vw, 20px);
+    line-height: 1.202;
+    color: #00366a;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Mobile Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+    .utgradfairs-page-title {
+        padding: 40px 20px;
+    }
+
+    .utgradfairs-hero {
+        min-height: 250px;
+        padding: 20px;
+    }
+
+    .utgradfairs-hero__video-container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .utgradfairs-scope-bar__content {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .utgradfairs-scope-bar__scope,
+    .utgradfairs-scope-bar__client {
+        width: auto;
+    }
+
+    .utgradfairs-scope-bar {
+        padding: 30px 0;
+    }
+
+    .utgradfairs-video-section {
+        padding: 30px 20px;
+    }
+
+    .utgradfairs-body {
+        padding: 40px 20px;
+        gap: 40px;
+    }
+
+    .utgradfairs-whatwemade__content {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .utgradfairs-whatwemade__poster-panel {
+        width: 100%;
+    }
+
+    .utgradfairs-whatwemade__phone-scene {
+        width: 100%;
+    }
+
+    .utgradfairs-whatwemade__phone-img {
+        width: 100%;
+    }
+
+    .utgradfairs-outcome {
+        padding: 40px 20px;
+    }
+}

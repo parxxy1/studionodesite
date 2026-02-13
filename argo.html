@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Argo: Digital Graffiti - A web-based AR prototype for persistent AR in real world spaces. A Studio Node case study.">
+
+    <title>Argo: Digital Graffiti | Studio Node</title>
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+
+    <!-- Fonts: Proxima Nova & Rooney Sans via Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/spf2pjm.css">
+    <!-- Inter font for Scope/Client bar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./css/tokens.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/argo.css">
+    <link rel="stylesheet" href="./css/cursor.css">
+</head>
+
+<body>
+    <main class="argo-page" data-name="Argo Case Study" data-node-id="2378:76">
+
+
+
+        <!-- Global Navigation -->
+        <nav class="global-nav" data-name="nav" data-node-id="2407:175">
+            <!-- Node Icon (Logo) - Icon Only -->
+            <div class="global-nav__logo" data-name="Node Icon" data-node-id="2407:176"
+                onclick="window.location.href='./index.html'">
+                <img class="logo-animated" src="./assets/colors/color1.svg" alt="Studio Node animated logo">
+            </div>
+
+
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="argo-hero" data-name="hero" data-node-id="2404:88">
+            <div class="argo-hero__content">
+                <!-- Title & Subtitle -->
+                <div class="argo-hero__title-block" data-name="case study title" data-node-id="2404:97">
+                    <h1 class="argo-hero__title" data-node-id="2378:86">ARGO: Digital Graffiti</h1>
+                    <p class="argo-hero__subtitle" data-node-id="2378:85">Persistent AR for Real World Spaces</p>
+                </div>
+
+                <!-- Phone Mockups Container -->
+                <div class="argo-hero__phones" data-name="phone mockups" data-node-id="2404:96">
+                    <img src="assets/phone mockups.png" alt="Phone Mockups">
+                </div>
+            </div>
+        </section>
+
+        <!-- Scope & Client Bar -->
+        <section class="argo-scope-bar" data-name="scope-client bar" data-node-id="2404:89">
+            <div class="argo-scope-bar__content" data-name="text" data-node-id="2404:98">
+                <!-- Scope Section -->
+                <div class="argo-scope-bar__scope" data-name="services" data-node-id="2378:88">
+                    <div class="argo-scope-bar__column" data-node-id="2378:89">
+                        <h3 class="argo-scope-bar__heading">Scope</h3>
+                        <p class="argo-scope-bar__item">Product + UX/UI</p>
+                        <p class="argo-scope-bar__item">AR Prototyping</p>
+                    </div>
+                    <div class="argo-scope-bar__column" data-node-id="2378:90">
+                        <p class="argo-scope-bar__item">Full-Stack Development</p>
+                        <p class="argo-scope-bar__item">3D Integration</p>
+                    </div>
+                </div>
+                <!-- Client Section -->
+                <div class="argo-scope-bar__client" data-node-id="2378:87">
+                    <h3 class="argo-scope-bar__heading">Client</h3>
+                    <p class="argo-scope-bar__item">Southern Utah Code Camp</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Video Section -->
+        <section class="argo-intro-video" data-name="intro video" data-node-id="2404:90">
+            <video class="argo-intro-video__player" poster="assets/video link.png" controls preload="metadata"
+                data-node-id="2378:101">
+                <source src="assets/ARGO Presentation Final.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- Body Section: The Project, The Challenge, The Approach -->
+        <section class="argo-body" data-name="body section" data-node-id="2404:91">
+            <!-- The Project -->
+            <div class="argo-body__block" data-name="Project" data-node-id="2404:99">
+                <h2 class="argo-body__heading" data-node-id="2378:92">The Project</h2>
+                <p class="argo-body__text" data-node-id="2378:93">Argo is a web-based AR prototype built in a 24-hour
+                    Code Camp sprint to test "digital graffiti"—letting people leave 3D art in a real space for others
+                    to discover later. The goal was to make a location feel like a shared, evolving gallery.</p>
+            </div>
+
+            <!-- The Challenge -->
+            <div class="argo-body__block" data-name="Challenge" data-node-id="2404:100">
+                <h2 class="argo-body__heading" data-node-id="2378:79">The Challenge</h2>
+                <p class="argo-body__text" data-node-id="2378:80">We needed to ship a functional end-to-end prototype
+                    fast, while solving the hard part: making 3D objects feel truly anchored to a physical location and
+                    persist across sessions and users despite real-world constraints like lighting and tracking
+                    reliability.</p>
+            </div>
+
+            <!-- The Approach -->
+            <div class="argo-body__block" data-name="Approach" data-node-id="2404:101">
+                <h2 class="argo-body__heading" data-node-id="2378:77">The Approach</h2>
+                <p class="argo-body__text" data-node-id="2378:78">We mapped Vasion's gym by scanning it with
+                    Scanniverse, then used 8th Wall (A-Frame/VPS) to align AR content to the environment. We wrapped the
+                    experience in a Vue web app with login and a tap-to-place flow, and used Supabase to store placement
+                    data so objects could reload for other users.</p>
+            </div>
+        </section>
+
+        <!-- What We Made Section -->
+        <section class="argo-whatwemade" data-name="what we made section" data-node-id="2404:95">
+            <!-- Header Bar -->
+            <div class="argo-whatwemade__header" data-name="what we made header" data-node-id="2404:92">
+                <h2 class="argo-whatwemade__title" data-node-id="2388:189">What We Made</h2>
+            </div>
+
+            <!-- Side by Side Content -->
+            <div class="argo-whatwemade__content" data-name="what we made content" data-node-id="2404:94">
+                <div class="argo-whatwemade__sidebyside">
+                    <!-- Image (left) -->
+                    <div class="argo-whatwemade__image">
+                        <img src="assets/Frame 22.png" alt="AR Experience Screenshot">
+                    </div>
+                    <!-- Video (right) -->
+                    <div class="argo-whatwemade__video">
+                        <video autoplay muted loop playsinline>
+                            <source src="assets/placingvideo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Outcome Section -->
+        <section class="argo-outcome" data-name="outcome section" data-node-id="2404:93">
+            <div class="argo-outcome__text" data-name="text" data-node-id="2404:103">
+                <h2 class="argo-outcome__heading" data-node-id="2378:94">The Outcome</h2>
+                <p class="argo-outcome__paragraph" data-node-id="2378:81">By the end of the sprint, we demoed a working
+                    full-stack AR prototype: users could log in, place 3D assets in the mapped space, and see persistent
+                    placements reappear for others—proving the core "shared AR canvas" concept and its potential for
+                    branded waypoint activations. As a team, we took home 3rd place in the competition!</p>
+            </div>
+            <div class="argo-outcome__image" data-name="IMG_6898 1" data-node-id="2378:107">
+                <img src="assets/argo-team.png" alt="Team photo at Code Camp">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

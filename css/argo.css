@@ -1,0 +1,475 @@
+/* ==========================================================================
+   Argo Case Study Page Styles
+   Fluid/Responsive - All sizes scale with viewport
+   ========================================================================== */
+
+.argo-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: var(--color-white);
+    position: relative;
+    overflow-x: hidden;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navigation - Uses shared .global-nav from styles.css */
+
+/* Hero Section */
+.argo-hero {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: clamp(10px, 3.5vw, 10px) clamp(40px, 10vw, 144px) 0;
+    position: relative;
+}
+
+.argo-hero__content {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.argo-hero__title {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-black);
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: 1.01;
+    letter-spacing: -0.01em;
+    /* Tighter tracking for display text */
+    color: #00366a !important;
+    margin: 0 0 clamp(6px, 0.7vw, 10px) 0;
+    padding-top: clamp(-20px, -5.5vw, -40px);
+}
+
+.argo-hero__subtitle {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-black);
+    font-size: clamp(16px, 1.67vw, 24px);
+    line-height: 1.202;
+    letter-spacing: -0.005em;
+    color: #00366a !important;
+    margin: 0;
+}
+
+/* Phone Mockups */
+.argo-hero__phones {
+    width: 100%;
+    margin-top: -10px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 2;
+    /* Offset scales with viewport - 150px at 1440px = ~10.4vw */
+    left: clamp(50px, 10.4vw, 150px);
+    padding-right: clamp(40px, 2.4vw, 35px);
+}
+
+.argo-hero__phones img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+/* Scope & Client Bar */
+.argo-scope-bar {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    min-height: clamp(150px, 14vw, 203px);
+    background-color: #96f0e9;
+    display: flex;
+    align-items: flex-end;
+    /* Overlap scales with viewport - 130px at 1440px = ~9vw */
+    margin-top: clamp(-110px, -25vw, -400px);
+    padding-bottom: clamp(25px, 2.8vw, 40px);
+    position: relative;
+    z-index: 1;
+}
+
+.argo-scope-bar__content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Gap scales - 200px at 1440px = ~13.9vw */
+    gap: clamp(40px, 13.9vw, 200px);
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 clamp(40px, 10vw, 144px);
+    font-family: "Inter", sans-serif;
+    color: #00366a;
+}
+
+.argo-scope-bar__scope {
+    display: flex;
+    /* Gap scales - 20px at 1440px = ~1.4vw */
+    gap: clamp(12px, 1.4vw, 20px);
+    align-items: flex-start;
+}
+
+.argo-scope-bar__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.argo-scope-bar__column:first-child {
+    /* Width scales - 221px at 1440px = ~15.3vw */
+    width: clamp(140px, 15.3vw, 221px);
+}
+
+.argo-scope-bar__column:last-child {
+    /* Width scales - 288px at 1440px = 20vw */
+    width: clamp(180px, 20vw, 288px);
+    /* Padding scales - 45px at 1440px = ~3.1vw */
+    padding-top: clamp(28px, 3.1vw, 45px);
+}
+
+.argo-scope-bar__client {
+    display: flex;
+    flex-direction: column;
+    /* Width scales - 348px at 1440px = ~24.2vw */
+    width: clamp(200px, 24.2vw, 348px);
+}
+
+.argo-scope-bar__heading {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    /* ExtraBold */
+    /* Font scales - 36px at 1440px = 2.5vw */
+    font-size: clamp(22px, 2.5vw, 36px);
+    line-height: 0.99;
+    letter-spacing: -0.02em;
+    /* Tighter for bold display face */
+    color: #00366a;
+    margin: 0 0 clamp(8px, 0.7vw, 12px) 0;
+    /* Slightly increased bottom margin */
+}
+
+.argo-scope-bar__item {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    /* Regular */
+    /* Font scales - 20px at 1440px = ~1.39vw */
+    font-size: clamp(14px, 1.39vw, 20px);
+    line-height: 1.25;
+    /* Increased line-height for readability */
+    color: #00366a;
+    margin: 0 0 clamp(4px, 0.4vw, 6px) 0;
+}
+
+
+
+.argo-scope-bar__item:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for narrow screens */
+@media (max-width: 768px) {
+    .argo-hero {
+        padding: 30px 20px 0 20px;
+    }
+
+    .argo-hero__phones {
+        justify-content: center;
+        left: 0;
+    }
+
+    .argo-scope-bar__content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .argo-scope-bar__scope {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .argo-scope-bar__column {
+        width: auto !important;
+        align-items: center;
+    }
+
+    .argo-scope-bar__column:last-child {
+        padding-top: 0;
+    }
+
+    .argo-scope-bar__client {
+        width: auto;
+        align-items: center;
+    }
+
+    .argo-scope-bar {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        margin-top: -40px;
+    }
+}
+
+/* ==========================================================================
+   Intro Video Section
+   ========================================================================== */
+.argo-intro-video {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    /* Figma: 43px padding top and bottom */
+    padding: clamp(25px, 3vw, 43px) clamp(20px, 5vw, 100px);
+}
+
+.argo-intro-video__player {
+    /* Figma: 853px width at 1440px = ~59.2vw */
+    width: 100%;
+    max-width: clamp(300px, 59.2vw, 853px);
+    /* Figma: 432px height at 1440px = 30vw */
+    height: clamp(200px, 30vw, 432px);
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+/* Mobile adjustments for video */
+@media (max-width: 768px) {
+    .argo-intro-video__player {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* ==========================================================================
+   Body Section (The Project, The Challenge, The Approach)
+   ========================================================================== */
+.argo-body {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: clamp(50px, 5.8vw, 83px) clamp(40px, 13.2vw, 190px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 5.5vw, 80px);
+}
+
+.argo-body__block {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.2vw, 17px);
+}
+
+.argo-body__heading {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-black);
+    /* Figma: 48px at 1440px = 3.33vw */
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: 1.01;
+    letter-spacing: -0.01em;
+    color: #00366a;
+    margin: 0;
+}
+
+.argo-body__text {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-medium);
+    /* Figma: 20px at 1440px = ~1.39vw */
+    font-size: clamp(14px, 1.39vw, 20px);
+    line-height: 1.35;
+    /* Increased from 1.202 for better readability on body copy */
+    color: #00366a;
+    margin: 0;
+    max-width: clamp(500px, 73.6vw, 1060px);
+}
+
+/* ==========================================================================
+   What We Made Section
+   ========================================================================== */
+.argo-whatwemade {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.argo-whatwemade__header {
+    width: 100%;
+    background-color: #96f0e9;
+    padding: clamp(25px, 2.6vw, 38px) clamp(40px, 7vw, 101px);
+}
+
+.argo-whatwemade__title {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-black);
+    /* Figma: 48px */
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: 1.202;
+    color: #00366a;
+    margin: 0;
+}
+
+.argo-whatwemade__content {
+    width: 100%;
+    max-width: var(--container-max-width);
+    /* Constrain width */
+    margin: 0 auto;
+    /* Center it */
+    align-items: center;
+    padding-top: clamp(25px, 2.6vw, 38px);
+}
+
+/* Side by Side Layout for Video and Image */
+.argo-whatwemade__sidebyside {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.argo-whatwemade__image {
+    flex: none;
+    overflow: hidden;
+}
+
+.argo-whatwemade__video {
+    flex: none;
+    overflow: visible;
+}
+
+.argo-whatwemade__video video {
+    width: auto;
+    height: clamp(200px, 50vw, 725px);
+    object-fit: contain;
+    display: block;
+}
+
+.argo-whatwemade__image img {
+    width: auto;
+    height: clamp(200px, 50vw, 725px);
+    object-fit: contain;
+    display: block;
+}
+
+/* Remove legacy grid styles if present */
+
+/* ==========================================================================
+   The Outcome Section
+   ========================================================================== */
+.argo-outcome {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: clamp(50px, 5.5vw, 80px) clamp(40px, 13.2vw, 190px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.argo-outcome__text {
+    width: 100%;
+    max-width: clamp(500px, 73.6vw, 1060px);
+    margin-bottom: clamp(30px, 4vw, 60px);
+}
+
+.argo-outcome__heading {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-black);
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: 1.01;
+    letter-spacing: -0.01em;
+    color: #00366a;
+    margin: 0 0 clamp(15px, 1.8vw, 26px) 0;
+}
+
+.argo-outcome__paragraph {
+    font-family: var(--font-proxima);
+    font-weight: var(--font-weight-medium);
+    font-size: clamp(14px, 1.39vw, 20px);
+    line-height: 1.35;
+    /* Consistent with other body copy */
+    color: #00366a;
+    margin: 0;
+}
+
+.argo-outcome__image {
+    /* Figma: 720px width, 541px height */
+    width: clamp(300px, 50vw, 720px);
+    border-radius: clamp(12px, 1.67vw, 24px);
+    overflow: hidden;
+}
+
+.argo-outcome__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   Mobile Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+    .argo-body {
+        padding: 40px 20px;
+        gap: 40px;
+    }
+
+    .argo-whatwemade__sidebyside {
+        flex-direction: row;
+    }
+
+    .argo-whatwemade__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+
+    .argo-whatwemade__img-large,
+    .argo-whatwemade__img-tall,
+    .argo-whatwemade__img-garden,
+    .argo-whatwemade__img-small {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .argo-whatwemade__img-small {
+        margin: 0;
+    }
+
+    .argo-whatwemade__img-small img {
+        max-width: 100%;
+    }
+
+    .argo-outcome {
+        padding: 40px 20px;
+    }
+
+    .argo-outcome__image {
+        width: 100%;
+    }
+}

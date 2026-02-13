@@ -106,6 +106,9 @@ button {
   @media (max-width: 768px) {
     top: -100px;
     /* Shift up to crop the top */
+    min-width: 100%;
+    /* Fix horizontal overflow */
+    margin-left: 0;
   }
 }
 
@@ -117,34 +120,59 @@ button {
 /* -------------------------------------------------------------------------
    NAV BUTTONS (data-name: "nav buttons")
    ------------------------------------------------------------------------- */
-.nav-buttons {
+/* -------------------------------------------------------------------------
+   GLOBAL NAVIGATION (Figma: 2407:175)
+   ------------------------------------------------------------------------- */
+.global-nav {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: var(--nav-height);
-  padding: 21px 29px;
+  height: clamp(80px, 9.2vw, 133px);
+  padding: 0 clamp(20px, 2.4vw, 35px);
   position: relative;
   z-index: var(--z-nav);
+  pointer-events: none;
+  /* Let clicks pass through container */
 }
 
-.nav-buttons__menu {
-  display: none;
-  /* Temporarily hidden */
-  width: 45px;
-  height: 46px;
+.global-nav>* {
+  pointer-events: auto;
+  /* Re-enable clicks on children */
+}
+
+/* Node Icon (Logo) */
+.global-nav__logo {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1 / 1;
+  /* Icon is square */
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform var(--transition-fast);
+  filter: drop-shadow(10px 10px 0px var(--color-opal-white));
 }
 
-.nav-buttons__menu:hover {
+.global-nav__logo:hover {
   transform: scale(1.05);
 }
 
-.nav-buttons__menu img {
+.global-nav__logo img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
+
+/* Removed CSS-based logo animation as it conflicts with main.js SRC swapping logic */
+/* .logo-animated handled by main.js */
+
+/* Removed complex .horizontal-logo text transforms as user requested icon only */
+
+
+
 
 /* -------------------------------------------------------------------------
    HERO BODY (data-name: "Hero Body")
@@ -159,6 +187,11 @@ button {
   padding-bottom: 150px;
   position: relative;
   z-index: var(--z-default);
+
+  @media (max-width: 768px) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
 }
 
 /* Horizontal Logo (data-name: "Horizontal Logo") */
@@ -170,6 +203,10 @@ button {
   place-items: start;
   transform: scale(1.5);
   transform-origin: center center;
+
+  @media (max-width: 768px) {
+    transform: scale(.9);
+  }
 }
 
 .horizontal-logo__vector {
@@ -300,6 +337,12 @@ button {
   text-align: center;
   text-shadow: var(--text-shadow-hero);
   margin-top: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    line-height: 1.2;
+    padding: 0 20px;
+  }
 }
 
 .hero-body__tagline .text--black {
@@ -644,6 +687,11 @@ animation-delay: 2s;
   /* Added */
   z-index: 1;
   /* Added */
+
+  @media (max-width: 768px) {
+    padding: var(--space-sm) 0 70px 0;
+    /* Add bottom padding */
+  }
 }
 
 /* Body content (data-name: "body") */
@@ -654,7 +702,9 @@ animation-delay: 2s;
   text-align: center;
   color: var(--color-node-orange);
   width: 100%;
-  height: 212px;
+  height: auto;
+  /* Removed fixed height */
+  min-height: 212px;
   padding: 0 var(--space-sm);
   position: relative;
   z-index: var(--z-default);
@@ -671,6 +721,7 @@ animation-delay: 2s;
   text-shadow: var(--text-shadow-heading);
   padding-bottom: 10px;
   padding-top: 20px;
+  font-size: clamp(32px, 8vw, 48px);
 }
 
 .who-we-are.is-hovered .who-we-are__title {
@@ -687,6 +738,12 @@ animation-delay: 2s;
   margin-top: 0;
   padding-left: 50px;
   padding-right: 50px;
+  font-size: clamp(18px, 4vw, 32px);
+
+  @media (max-width: 768px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .who-we-are__description strong {
@@ -703,6 +760,11 @@ animation-delay: 2s;
   left: -50px;
   top: 75px;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    display: none;
+    /* Hide on mobile to prevent overlap/overflow */
+  }
 }
 
 .who-we-are__hand-wrapper {
@@ -777,6 +839,7 @@ animation-delay: 2s;
   width: 100%;
   height: 100%;
 }
+
 
 /* -------------------------------------------------------------------------
    BAR SEPARATOR (data-name: "BarSeperator")
@@ -1356,6 +1419,17 @@ animation-delay: 2s;
   text-shadow: 0px 1px 0px var(--color-white);
 }
 
+/* Clickable portfolio item link styling */
+a.portfolio-item--link {
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+a.portfolio-item--link:hover {
+  transform: scale(1.05);
+}
+
 
 /* -------------------------------------------------------------------------
    SQUIGGLY LINE (data-name: "ScwigglyLine")
@@ -1402,6 +1476,7 @@ animation-delay: 2s;
   text-shadow: var(--text-shadow-section);
   padding-bottom: 30px;
   padding-top: 50px;
+  font-size: clamp(32px, 8vw, 54px);
 }
 
 .what-we-are.is-hovered .what-we-are__title {
@@ -1418,11 +1493,16 @@ animation-delay: 2s;
   text-transform: uppercase;
   max-width: 80%;
   text-align: left;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    font-size: 24px;
+  }
 }
 
 .what-we-are__content p {
   margin-bottom: var(--space-md);
-  font-size: 38px;
+  font-size: clamp(20px, 4vw, 38px);
   line-height: 1.2;
   letter-spacing: -1.3px;
 }
@@ -1609,10 +1689,7 @@ animation-delay: 2s;
 
 /* Tablet - 768px */
 @media (max-width: 768px) {
-  .horizontal-logo {
-    transform: scale(0.75);
-    transform-origin: center;
-  }
+
 
   .hero-body__tagline {
     font-size: 24px;
@@ -1718,9 +1795,7 @@ animation-delay: 2s;
     height: 36px;
   }
 
-  .horizontal-logo {
-    transform: scale(0.5);
-  }
+
 
   .hero-body {
     padding: 60px var(--space-xs);
