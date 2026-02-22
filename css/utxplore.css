@@ -116,10 +116,15 @@
 }
 
 .utxplore-scope-bar__scope,
-.utxplore-scope-bar__client,
+.utxplore-scope-bar__client {
+    display: flex;
+    flex-direction: column;
+}
+
 .utxplore-scope-bar__leads {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
 }
 
 .utxplore-scope-bar__heading {

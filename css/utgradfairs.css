@@ -138,12 +138,19 @@
     align-items: center;
 }
 
-.utgradfairs-scope-bar__client,
+.utgradfairs-scope-bar__client {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(140px, 12.5vw, 180px);
+}
+
 .utgradfairs-scope-bar__leads {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: clamp(140px, 12.5vw, 180px);
+    white-space: nowrap;
 }
 
 .utgradfairs-scope-bar__heading {
