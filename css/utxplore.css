@@ -116,7 +116,8 @@
 }
 
 .utxplore-scope-bar__scope,
-.utxplore-scope-bar__client {
+.utxplore-scope-bar__client,
+.utxplore-scope-bar__leads {
     display: flex;
     flex-direction: column;
 }
