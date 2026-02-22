@@ -142,7 +142,8 @@
     padding-top: clamp(28px, 3.1vw, 45px);
 }
 
-.argo-scope-bar__client {
+.argo-scope-bar__client,
+.argo-scope-bar__leads {
     display: flex;
     flex-direction: column;
     /* Width scales - 348px at 1440px = ~24.2vw */
