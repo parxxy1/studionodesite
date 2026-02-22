@@ -51,7 +51,6 @@
     color: #00366a;
     margin: 0 0 clamp(6px, 0.7vw, 10px) 0;
     padding-top: clamp(-20px, -5.5vw, -40px);
-    text-transform: lowercase;
 }
 
 .utxplore-page-title__subtitle {
