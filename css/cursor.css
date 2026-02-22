@@ -26,9 +26,10 @@
 
 /* @keyframes colorCycle removed - cursor is now static image */
 
-/* Hide default cursor GLOBALLY (even on interactive elements) */
-* {
-    cursor: none !important;
+@media (hover: hover) and (pointer: fine) {
+    * {
+        cursor: none !important;
+    }
 }
 
 /* Removed "Restore cursor" block to ensure total stealth */
@@ -58,5 +59,15 @@
     100% {
         opacity: 0;
         transform: translate(50%, 50%) scale(0.2);
+    }
+}
+
+/* Hide the custom cursor elements on touch devices */
+@media (hover: none),
+(pointer: coarse) {
+
+    .cursor-orb,
+    .cursor-trail {
+        display: none !important;
     }
 }

@@ -107,7 +107,7 @@
 .argo-scope-bar__content {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     /* Gap scales - 200px at 1440px = ~13.9vw */
     gap: clamp(40px, 13.9vw, 200px);
     width: 100%;
