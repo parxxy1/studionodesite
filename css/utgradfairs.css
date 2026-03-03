@@ -37,9 +37,9 @@
 .utgradfairs-page-title {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    padding: clamp(50px, 6.4vw, 92px) clamp(40px, 11vw, 159px);
+    padding: 20px clamp(40px, 13.2vw, 150px) 60px;
 }
 
 .utgradfairs-page-title__heading {
@@ -50,7 +50,7 @@
     letter-spacing: -0.01em;
     color: #00366a;
     margin: 0 0 clamp(6px, 0.7vw, 10px) 0;
-    padding-top: clamp(-20px, -5.5vw, -40px);
+    padding-top: 20px;
     width: 100%;
 }
 

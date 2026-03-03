@@ -10,7 +10,7 @@
     max-width: 100vw;
     margin: 0 auto;
     min-height: 100vh;
-    background-color: var(--color-white);
+    background-color: var(--color-opal-white);
     position: relative;
     overflow-x: hidden;
     opacity: 0;
@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: clamp(10px, 3.5vw, 10px) clamp(40px, 10vw, 144px) 0;
+    padding: 20px clamp(40px, 13.2vw, 150px) 0;
     position: relative;
 }
 
@@ -56,7 +56,7 @@
     /* Tighter tracking for display text */
     color: #00366a !important;
     margin: 0 0 clamp(6px, 0.7vw, 10px) 0;
-    padding-top: clamp(-20px, -5.5vw, -40px);
+    padding-top: 20px;
 }
 
 .argo-hero__subtitle {
