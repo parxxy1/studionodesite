@@ -186,8 +186,8 @@
   // ==========================================================================
 
   function initLogoAnimation() {
-    const logo = document.querySelector('.logo-animated');
-    if (!logo) return;
+    const logos = document.querySelectorAll('.logo-animated');
+    if (logos.length === 0) return;
 
     const frames = [
       "./assets/colors/color1.svg",
@@ -201,7 +201,9 @@
     // Cycle every 750ms
     setInterval(() => {
       idx = (idx + 1) % frames.length;
-      logo.src = frames[idx];
+      logos.forEach(logo => {
+        logo.src = frames[idx];
+      });
     }, 750);
   }
 
