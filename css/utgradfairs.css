@@ -209,23 +209,23 @@
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: clamp(50px, 5.8vw, 83px) clamp(40px, 13.2vw, 190px);
-    padding-bottom: clamp(50px, 13.3vw, 191px);
     display: flex;
     flex-direction: column;
-    gap: clamp(40px, 4.44vw, 64px);
+    gap: clamp(40px, 5.5vw, 80px);
 }
 
 .utgradfairs-body__block {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: clamp(10px, 1.2vw, 17px);
 }
 
 .utgradfairs-body__heading {
     font-family: var(--font-proxima);
-    font-weight: var(--font-weight-extrabold);
-    font-size: clamp(26px, 2.78vw, 40px);
-    line-height: normal;
+    font-weight: var(--font-weight-black);
+    font-size: clamp(28px, 3.33vw, 48px);
+    line-height: 1.01;
+    letter-spacing: -0.01em;
     color: #00366a;
     margin: 0;
 }
@@ -234,10 +234,10 @@
     font-family: var(--font-proxima);
     font-weight: var(--font-weight-medium);
     font-size: clamp(14px, 1.39vw, 20px);
-    line-height: 1.202;
+    line-height: 1.35;
     color: #00366a;
     margin: 0;
-    max-width: 100%;
+    max-width: clamp(500px, 73.6vw, 1060px);
 }
 
 /* ==========================================================================
@@ -339,11 +339,10 @@
     width: 100%;
     max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: clamp(18px, 2.85vw, 36px) clamp(40px, 13.2vw, 190px);
+    padding: clamp(50px, 5.5vw, 80px) clamp(40px, 13.2vw, 190px);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-bottom: 50px;
 }
 
 .utgradfairs-outcome__text {
@@ -356,12 +355,12 @@
 
 .utgradfairs-outcome__heading {
     font-family: var(--font-proxima);
-    font-weight: var(--font-weight-extrabold);
+    font-weight: var(--font-weight-black);
     font-size: clamp(28px, 3.33vw, 48px);
-    line-height: normal;
+    line-height: 1.01;
+    letter-spacing: -0.01em;
     color: #00366a;
     margin: 0;
-
 }
 
 .utgradfairs-outcome__paragraph {

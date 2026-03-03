@@ -235,10 +235,10 @@
    ========================================================================== */
 .utxplore-body {
     width: 100%;
-    padding: clamp(50px, 7.2vw, 103px) clamp(40px, 13.1vw, 189px);
+    padding: clamp(50px, 5.8vw, 83px) clamp(40px, 13.2vw, 190px);
     display: flex;
     flex-direction: column;
-    gap: clamp(24px, 2.6vw, 37px);
+    gap: clamp(40px, 5.5vw, 80px);
     overflow: hidden;
 }
 
@@ -406,7 +406,7 @@
    ========================================================================== */
 .utxplore-outcome {
     width: 100%;
-    padding: clamp(40px, 4.2vw, 61px) clamp(40px, 13.1vw, 188px);
+    padding: clamp(50px, 5.5vw, 80px) clamp(40px, 13.2vw, 190px);
     display: flex;
     flex-direction: column;
     gap: clamp(32px, 4vw, 58px);
