@@ -185,6 +185,11 @@ button {
   transform: scale(1.05);
 }
 
+/* When the contact-style button is used inside the nav, strip the vertical margin */
+.global-nav .hero-body__contact-button {
+  margin-top: 0;
+}
+
 /* Removed CSS-based logo animation as it conflicts with main.js SRC swapping logic */
 /* .logo-animated handled by main.js */
 
