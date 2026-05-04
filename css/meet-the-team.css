@@ -1,0 +1,316 @@
+/* ==========================================================================
+   Meet the Team Page — layout from Figma node 2607:185
+   Frame: py-200px, gap-10px · Cards: 326×405, r-58px · Asset: 370×288 absolute
+   ========================================================================== */
+
+.team-page {
+  /* Remove global zoom so spacing matches Figma; use browser zoom if needed */
+  background: #ffffff;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: clamp(80px, 14vw, 100px) 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.team-page__nav {
+  position: absolute;
+  inset: 0 0 auto 0;
+}
+
+.team-content-container {
+  zoom: 0.8;
+  width: 100%;
+}
+
+/* -------------------------------------------------------------------------
+   Title — MEET OUR 106px · TEAM 200px / lh 120px · shadow 4px 4px citra
+   ------------------------------------------------------------------------- */
+.team-title {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-proxima);
+  font-style: normal;
+  text-align: center;
+  color: var(--color-node-orange);
+  text-shadow: 4px 4px 0 var(--color-citra);
+}
+
+.team-title__top {
+  width: 100%;
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(48px, 7.4vw, 106px);
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.team-title__bottom {
+  width: 100%;
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(72px, 13.9vw, 200px);
+  line-height: clamp(56px, 8.3vw, 120px);
+  text-transform: uppercase;
+  padding-bottom: clamp(25px, 5.6vw, 35px);
+}
+
+/* -------------------------------------------------------------------------
+   Section headers — px 506 py 36 · label 64px sky
+   ------------------------------------------------------------------------- */
+.team-section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 76px clamp(20px, 10vw, 506px);
+}
+
+.team-section-header__text {
+  font-family: var(--font-proxima);
+  font-style: normal;
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(32px, 4.4vw, 64px);
+  line-height: normal;
+  color: var(--color-digital-sky);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------------
+   Rows — gap 175 · py 116
+   ------------------------------------------------------------------------- */
+.team-section {
+  width: 100%;
+}
+
+.team-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(28px, 12vw, 175px);
+  padding: clamp(48px, 8vw, 116px) 0;
+}
+
+.team-row--single {
+  gap: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Cards — 326×405 · rounded 58 · px 36 · pb 52 · gap 5
+   pt 183 (top-slot image) · pt 50 (bottom-slot image)
+   ------------------------------------------------------------------------- */
+.team-card {
+  width: min(326px, 92vw);
+  aspect-ratio: 326 / 405;
+  height: auto;
+  border-radius: 58px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding-left: 36px;
+  padding-right: 36px;
+  padding-bottom: 52px;
+  overflow: visible;
+}
+
+.team-card--top {
+  padding-top: clamp(100px, 22vw, 180px);
+}
+
+.team-card--bottom {
+  padding-top: clamp(36px, 8vw, 40px);
+}
+
+.team-card--sky {
+  background: var(--color-digital-sky);
+}
+
+.team-card--citra {
+  background: var(--color-citra);
+}
+
+.team-card--orange {
+  background: var(--color-node-orange);
+}
+
+.team-card--laguna {
+  background: var(--color-laguna);
+}
+
+.team-card__name {
+  font-family: var(--font-proxima);
+  font-style: normal;
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(18px, 3.7vw, 24px);
+  line-height: normal;
+  color: #000000;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.team-card__role {
+  font-family: var(--font-proxima);
+  font-style: normal;
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(14px, 2.5vw, 16px);
+  line-height: normal;
+  color: #000000;
+  text-align: center;
+}
+
+.team-card__bio {
+  font-family: var(--font-proxima);
+  font-style: normal;
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(12px, 2.2vw, 14px);
+  line-height: normal;
+  color: #000000;
+  text-align: center;
+  width: min(254px, 100%);
+}
+
+.team-card__cta {
+  font-family: var(--font-proxima);
+  font-style: normal;
+  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(14px, 2.5vw, 16px);
+  line-height: normal;
+  color: #000000;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/*
+ * Portrait frame: Figma 370×288 → relative to card 326×405
+ * w = 370/326 ≈ 113.5%   h = 288/405 ≈ 71.1%
+ * Position: --asset-left, --asset-top (from Figma px ÷ card width/height)
+ */
+.team-card__asset {
+  position: absolute;
+  width: 113.496%;
+  height: 71.111%;
+  left: var(--asset-left, 0%);
+  top: var(--asset-top, 0%);
+  pointer-events: none;
+}
+
+.team-card--bottom .team-card__asset {
+  top: calc(var(--asset-top, 0%) + 10%);
+}
+
+.team-card__asset img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  max-width: none;
+}
+
+@media (max-width: 768px) {
+
+  /* ── Page shell ───────────────────────────────── */
+  .team-page {
+    padding: 100px 0 60px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .team-content-container {
+    zoom: 1;
+    width: 100%;
+  }
+
+  /* ── Title ────────────────────────────────────── */
+  .team-title__top {
+    font-size: clamp(36px, 10vw, 64px);
+  }
+
+  .team-title__bottom {
+    font-size: clamp(64px, 18vw, 120px);
+    line-height: 0.85;
+    padding-bottom: 20px;
+  }
+
+  /* ── Section headers ──────────────────────────── */
+  .team-section-header {
+    padding: 48px 20px 24px;
+  }
+
+  .team-section-header__text {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+
+  /* ── Rows → single column ─────────────────────── */
+  .team-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    padding: 24px 0 48px;
+  }
+
+  /* ── Cards ────────────────────────────────────── */
+  .team-card {
+    width: min(300px, 85vw);
+    aspect-ratio: auto;
+    /* Don't force the desktop ratio */
+    height: auto;
+    border-radius: 36px;
+    padding: 20px 24px 28px;
+    overflow: hidden;
+    /* Clip the absolute asset so it can't escape */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+  }
+
+  /* Reset top/bottom padding-top — we use in-flow image instead */
+  .team-card--top,
+  .team-card--bottom {
+    padding-top: 20px;
+  }
+
+  /* ── Hide the flying absolute asset on mobile ─── */
+  .team-card__asset {
+    display: none;
+  }
+
+  /* ── Inject an in-flow photo via ::before trick –
+        We can't use CSS to set src, so we show the
+        <img> directly by un-hiding the element but
+        resetting its positioning to in-flow.
+        (We target the img inside the hidden asset div) */
+  .team-card__asset img {
+    display: none;
+    /* asset div is already display:none, keep consistent */
+  }
+
+  /* ── Text sizing ──────────────────────────────── */
+  .team-card__name {
+    font-size: 18px;
+  }
+
+  .team-card__role {
+    font-size: 13px;
+  }
+
+  .team-card__bio {
+    font-size: 12px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .team-card__cta {
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}

@@ -166,6 +166,25 @@ button {
   object-fit: contain;
 }
 
+/* Simple text link in global nav (e.g. Meet the Team) */
+.team-nav-link {
+  font-family: var(--font-rooney);
+  font-weight: var(--font-weight-black);
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  color: var(--color-node-orange);
+  text-shadow: 1px 1px 0px rgba(105, 229, 255, 0.6);
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(246, 255, 252, 0.75);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform var(--transition-fast);
+}
+
+.team-nav-link:hover {
+  transform: scale(1.05);
+}
+
 /* Removed CSS-based logo animation as it conflicts with main.js SRC swapping logic */
 /* .logo-animated handled by main.js */
 
